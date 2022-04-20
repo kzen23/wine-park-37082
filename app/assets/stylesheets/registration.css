@@ -22,7 +22,7 @@
 
 .boss_form{
   width: 500px;
-  height: 540px;
+  height: 650px;
   background-color: #dddddd;
   margin: 0 auto;
   border: 1px solid black;
@@ -54,7 +54,7 @@
 
 .birthday_form select{
   text-align: center;
-  width: 53px;
+  width: 70px;
   height: 25px;
 }
 

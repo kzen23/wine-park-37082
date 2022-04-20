@@ -17,7 +17,7 @@
       <span><%= current_user.nickname %>
         <ul>
           <li>
-            <%= link_to "ログアウト", "destroy_user_session_path", method: :delete %>
+            <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
           </li>
         </ul>
       </span>

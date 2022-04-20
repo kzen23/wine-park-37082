@@ -6,33 +6,40 @@
   <%= render "devise/shared/error_messages", resource: resource %>
 
 <div class="boss_form">
-  <div class=input_form>
+  <div class="input_form">
     <%= f.label :nickname %><br />
     <%= f.text_field :nickname,class:"input_parts", max_length: "20", autofocus: true, autocomplete: "off" %>
   </div>
   
-  <div class=input_form>
+  <div class="input_form">
     <%= f.label :email %><br />
     <%= f.email_field :email,class:"input_parts", autocomplete: "off" %>
   </div>
 
-  <div class=input_form>
+  <div class="input_form">
     <%= f.label :password %>
     <% if @minimum_password_length %>
     <% end %><br />
     <%= f.password_field :password,class:"input_parts", autocomplete: "off" %>
   </div>
 
-  <div class=input_form>
+  <div class="input_form">
     <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "off" %>
+    <%= f.password_field :password_confirmation, class: "input_parts", autocomplete: "off" %>
   </div>
 
-  <div class=input_form>
+  <div class="input_form">
     <%= f.label :last_name %><br />
-    <%= f.text_field :last_name, class:"input_parts" %><br />
+    <%= f.text_field :last_name, class: "input_parts" %><br />
     <%= f.label :first_name %><br />
-    <%= f.text_field :first_name %>
+    <%= f.text_field :first_name, class: "input_parts" %>
+  </div>
+
+  <div class="input_form">
+    <%= f.label :last_name_kana %><br />
+    <%= f.text_field :last_name_kana, class: "input_parts" %><br />
+    <%= f.label :first_name_kana %><br />
+    <%= f.text_field :first_name_kana, class: "input_parts" %>
   </div>
 
 <div class="birthday_label">
