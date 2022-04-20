@@ -18,6 +18,16 @@
   font-size: 30px;
 }
 
+.select_links{
+  position: absolute;
+  top: 20px;
+  right: 150px;
+}
+
+.title_link{
+  text-decoration: none;
+}
+
 .posts{
   position: absolute;
   top:40px;
