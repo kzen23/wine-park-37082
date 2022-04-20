@@ -5,11 +5,37 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
+    <link rel="stylesheet" type="text/css" href="http://yui.yahooapis.com/3.18.1/build/cssreset/cssreset-min.css">
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
+    <header class="header">
+      <h1 class="title">Wine-Park♪<h1>
+      <% if user_signed_in? %>
+      <span><%= current_user.nickname %>
+        <ul>
+          <li>
+            <%= link_to "ログアウト", "destroy_user_session_path", method: :delete %>
+          </li>
+        </ul>
+      </span>
+      <%= link_to "投稿する", "#" %>
+      <% else %>
+       <div class="posts">
+        <%= link_to "ログイン", new_user_session_path, class: "post" %>
+        <%= link_to "新規登録", new_user_registration_path, class: "post" %>
+       </div>
+      <% end %>
+    </header>
     <%= yield %>
+    <div class="boss_footer">
+    <footer>
+      <p class="footer">
+        Copyright WinePark37082 2022.
+      </p>
+    </footer>
+    </div>
   </body>
 </html>

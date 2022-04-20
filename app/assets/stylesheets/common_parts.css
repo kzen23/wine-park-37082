@@ -1,0 +1,48 @@
+.header{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #a888be;
+  position: relative;
+}
+
+.title{
+  background-color: #c5b2d6;
+  color: #b50099;
+  text-align: center;
+  width: 500px;
+  padding: 40px 0;
+  margin: 0px;
+  border: 1px solid black;
+  font-weight: bold;
+  font-size: 30px;
+}
+
+.posts{
+  position: absolute;
+  top:40px;
+  right: 100px;
+}
+
+.post{
+  width: 20px;
+  height: 20px;
+  margin-left: 20px;
+  text-decoration: none;
+  font-size: 20px;
+}
+
+.boss_footer{
+  background-color: #a888be;
+}
+
+.footer{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto;
+  width: 500px;
+  height: 40px;
+  background-color: azure;
+  font-weight: bold;
+}
