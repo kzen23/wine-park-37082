@@ -49,4 +49,5 @@ RSpec.describe User, type: :model do
       it 'emailは@を含まないと登録できない' do
       end
     end
+  end
 end
