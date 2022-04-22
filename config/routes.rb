@@ -1,4 +1,9 @@
 Rails.application.routes.draw do
-  devise_for :users
+  devise_for :users, controllers: {
+    registrations: 'users/registrations'
+  }
+  devise_scope :user do
+    get 'users', to: 'users/registrations#create'
+  end
   root to: "wine_articles#index"
 end
