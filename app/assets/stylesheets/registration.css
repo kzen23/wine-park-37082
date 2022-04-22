@@ -20,6 +20,11 @@
   background-color: #a888be;
 }
 
+.errors{
+  text-align: center;
+  color: red;
+}
+
 .boss_form{
   width: 500px;
   height: 650px;
@@ -27,6 +32,7 @@
   margin: 0 auto;
   border: 1px solid black;
   font-weight: bold;
+  position: relative;
 }
 
 .input_form{
