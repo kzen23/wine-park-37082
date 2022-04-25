@@ -15,13 +15,13 @@ class Users::RegistrationsController < Devise::RegistrationsController
     if @user.valid?
       birth_data = @user.birthday.strftime('%Y%m%d').to_i
       age = age_check(birth_data)
-        if age >= 20
-          @user.save
-          bypass_sign_in(@user)
-          redirect_to root_path
-        else
-          redirect_to root_path
-        end
+      if age >= 20
+        @user.save
+        bypass_sign_in(@user)
+        redirect_to root_path
+      else
+        redirect_to root_path
+      end
     else
       render :new and return
     end
@@ -76,6 +76,6 @@ class Users::RegistrationsController < Devise::RegistrationsController
   def age_check(birthday)
     time = Time.now
     today = time.strftime('%Y%m%d').to_i
-    return (today - birthday) / 10000
+    (today - birthday) / 10_000
   end
 end
