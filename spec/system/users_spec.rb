@@ -1,12 +1,12 @@
 require 'rails_helper'
 
 def basic_pass(path)
-  username = ENV["BASIC_AUTH_USER"]
-  password = ENV["BASIC_AUTH_PASSWORD"]
+  username = ENV['BASIC_AUTH_USER']
+  password = ENV['BASIC_AUTH_PASSWORD']
   visit "http://#{username}:#{password}@#{Capybara.current_session.server.host}:#{Capybara.current_session.server.port}#{path}"
 end
 
-RSpec.describe "Users", type: :system do
+RSpec.describe 'Users', type: :system do
   before do
     @user = FactoryBot.build(:user)
   end
@@ -34,8 +34,9 @@ RSpec.describe "Users", type: :system do
       select '6', from: 'user_birthday_2i'
       select '21', from: 'user_birthday_3i'
       # 新規登録ボタンを押すとユーザーモデルのカウントが１上がることを確認する
-      expect{find('input[name="commit"]').click
-      }.to change {User.count}.by(1)
+      expect do
+        find('input[name="commit"]').click
+      end.to change { User.count }.by(1)
       # トップページへ遷移したことを確認する
       expect(current_path).to eq(root_path)
       # 遷移したトップページにはログアウトのためのリングがあることを確認する
@@ -56,20 +57,21 @@ RSpec.describe "Users", type: :system do
       # 新規登録ページに移動する
       visit new_user_registration_path
       # ユーザー情報を入力する
-      fill_in 'Nickname', with: ""
-      fill_in 'Email', with: ""
-      fill_in 'Password', with: ""
-      fill_in 'Password confirmation', with: ""
-      fill_in 'Last name', with: ""
-      fill_in 'First name', with: ""
-      fill_in 'Last name kana', with: ""
-      fill_in 'First name kana', with: ""
+      fill_in 'Nickname', with: ''
+      fill_in 'Email', with: ''
+      fill_in 'Password', with: ''
+      fill_in 'Password confirmation', with: ''
+      fill_in 'Last name', with: ''
+      fill_in 'First name', with: ''
+      fill_in 'Last name kana', with: ''
+      fill_in 'First name kana', with: ''
       select '--', from: 'user_birthday_1i'
       select '--', from: 'user_birthday_2i'
       select '--', from: 'user_birthday_3i'
       # 新規登録ボタンを押してもユーザーモデルのカウントがあがらないことを確認する
-      expect{find('input[name="commit"]').click
-      }.to change { User.count }.by(0)
+      expect do
+        find('input[name="commit"]').click
+      end.to change { User.count }.by(0)
       # 新規登録ページへ戻されることを確認する
       expect(current_path).to eq(users_path)
     end
@@ -95,8 +97,9 @@ RSpec.describe "Users", type: :system do
       select '12', from: 'user_birthday_2i'
       select '31', from: 'user_birthday_3i'
       # 新規登録ボタンを押してもユーザーモデルのカウントがあがらないことを確認する
-      expect{find('input[name="commit"]').click
-      }.to change { User.count }.by(0)
+      expect do
+        find('input[name="commit"]').click
+      end.to change { User.count }.by(0)
       # トップページへ遷移したことを確認する
       expect(current_path).to eq(root_path)
       # 遷移したトップページに新規登録とログインのためのリンクがあることを確認する
@@ -106,7 +109,7 @@ RSpec.describe "Users", type: :system do
   end
 end
 
-RSpec.describe "Users", type: :system do
+RSpec.describe 'Users', type: :system do
   before do
     @user = FactoryBot.create(:user)
   end
@@ -147,8 +150,8 @@ RSpec.describe "Users", type: :system do
       # ログインページに移動する
       visit new_user_session_path
       # フォームに情報を入力する
-      fill_in 'Email', with: ""
-      fill_in 'Password', with: ""
+      fill_in 'Email', with: ''
+      fill_in 'Password', with: ''
       # ログインボタンを押す
       find('input[name="commit"]').click
       # ログインページへ戻されることを確認する
