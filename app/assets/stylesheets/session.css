@@ -1,0 +1,67 @@
+.title_wrap2{
+  height: 100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #a888be;
+  color: #330000;
+}
+
+.title_deco{
+  text-align: center;
+  width: 500px;
+  background-color: #bc917f;
+  padding: 40px 0;
+  border: 1px solid black;
+  font-size: 25px;
+  font-weight: bold;
+  position: relative;
+}
+
+.login-flash-message{
+  color: red;
+  height: 0px; 
+  position: absolute;
+  top: 200px;
+  left: 530px;
+}
+
+.boss_form2{
+  margin: 0 auto;
+  width: 500px;
+  height: 380px;
+  background-color: #dddddd;
+  border: 1px solid black;
+}
+
+.session_form{
+  padding: 20px;
+  text-align: center;
+  font-weight: bold;
+}
+
+.form_deco{
+  border: 1px solid black;
+  text-align: center;
+}
+
+.check{
+  text-align: center;
+  padding: 10px;
+  margin-top: 20px;
+}
+
+.session_button{
+  text-align: center;
+  margin-top: 20px;
+  font-weight: bold;
+}
+
+.session{
+  height: 30px;
+}
+
+.shares{
+  text-align: center;
+  margin-top: 20px;
+}

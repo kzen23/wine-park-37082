@@ -1,0 +1,39 @@
+<div class="title_wrap2">
+  <h2 class="title_deco">ログイン</h2>
+</div>
+
+    <div class="login-flash-message">
+      <%= flash[:notice] %>
+      <%= flash[:alert] %>
+    </div>
+
+<%= form_with model: @user, url: user_session_path,  class: 'new_user', id: 'new_user', local: true do |f| %>
+  
+  <div class="boss_form2">
+    <div class="session_form">
+      <%= f.label :email %><br />
+      <%= f.email_field :email, autofocus: true, class: "form_deco", autocomplete: "email" %>
+    </div>
+
+    <div class="session_form">
+      <%= f.label :password %><br />
+      <%= f.password_field :password, class: "form_deco", autocomplete: "off" %>
+    </div>
+  
+
+  <% if devise_mapping.rememberable? %>
+    <div class="check">
+      <%= f.check_box :remember_me %>
+      <%= f.label :remember_me %>
+    </div>
+  <% end %>
+
+  <div class="session_button">
+    <%= f.submit "ログイン", class: "session"%>
+  </div>
+<% end %>
+
+<div class="shares">
+  <%= render "devise/shared/links" %>
+</div>
+</div>

@@ -1,0 +1,78 @@
+.titles_wrap{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #a888be;
+}
+
+.sub_title{
+  text-align: center;
+  background-color: #bc917f;
+  width: 500px;
+  padding: 40px 0;
+  margin: 0px;
+  border: 1px solid black;
+  font-size: 25px;
+  font-weight: bold;
+}
+
+.new_user{
+  background-color: #a888be;
+}
+
+.errors{
+  text-align: center;
+  color: red;
+}
+
+.boss_form{
+  width: 500px;
+  height: 650px;
+  background-color: #dddddd;
+  margin: 0 auto;
+  border: 1px solid black;
+  font-weight: bold;
+  position: relative;
+}
+
+.input_form{
+  text-align: center;
+  padding: 5px 0;
+}
+
+.input_parts{
+  width: 200px;
+  height: 20px;
+  margin-top: 5px;
+  text-align: center;
+}
+
+.birthday_label{
+  text-align: center;
+}
+
+.birthday_form{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 28px;
+}
+
+.birthday_form select{
+  text-align: center;
+  width: 70px;
+  height: 25px;
+}
+
+.registration_button{
+  margin: 20px 0;
+  text-align: center;
+}
+
+.button{
+  height: 30px;
+}
+
+.links{
+  text-align: center;
+}
