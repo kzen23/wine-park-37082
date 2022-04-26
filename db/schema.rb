@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_04_12_120803) do
+ActiveRecord::Schema.define(version: 2022_04_26_012013) do
 
   create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -30,4 +30,20 @@ ActiveRecord::Schema.define(version: 2022_04_12_120803) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  create_table "wine_articles", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "wine_name", null: false
+    t.string "wine_name_kana"
+    t.integer "wine_price", null: false
+    t.string "wine_shop", null: false
+    t.string "title", null: false
+    t.text "comment", null: false
+    t.integer "wine_type_id", null: false
+    t.integer "wine_taste_id", null: false
+    t.bigint "user_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["user_id"], name: "index_wine_articles_on_user_id"
+  end
+
+  add_foreign_key "wine_articles", "users"
 end
