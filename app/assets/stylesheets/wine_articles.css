@@ -1,0 +1,33 @@
+.index_deco{
+  background-color: #a888be;
+}
+
+.index_form{
+  background-color: #bc917f;
+  width: 500px;
+  height: 100px;
+  margin: 0 auto;
+  font-weight: bold;
+  font-size: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid black;
+}
+
+.index_form2{
+  background-color: #dddddd;
+  width: 500px;
+  height: 180px;
+  margin: 0 auto;
+  color: red;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid black;
+}
+
+.caution{
+  line-height: 1.5;
+  padding: 0 5px 0 10px;
+}

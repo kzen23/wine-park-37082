@@ -1,0 +1,18 @@
+<% if user_signed_in? %>
+  <h1>ログイン中<h1>
+<% else %>
+  
+  <div class= "index_deco" >
+    <div class="index_form" %>
+      <div class="information">Wine-Parkアプリへようこそ！</div>
+    </div>
+  <div class="index_form2">
+      <div class="caution">お酒は20歳からです。当アプリケーションは、
+        20歳以上の日本国内に住まわれるお客様同士の利用を想定しております。
+        法律に反しての利用から生じたユーザー、またはユーザー同士のトラブルに関して当アプリケーションは、
+        一切、責任を負わないものとします。犯罪行為、不適切な利用に関しては、発覚した時点で適切な処置を致します。
+        ユーザー登録をもってユーザーは、それに同意したものとみなします。
+      </div>
+    </div>
+  </div>
+<% end %>
