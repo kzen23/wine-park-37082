@@ -6,4 +6,5 @@ Rails.application.routes.draw do
     get 'users', to: 'users/registrations#create'
   end
   root to: "wine_articles#index"
+  resources :wine_articles, only: :index
 end
