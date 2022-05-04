@@ -12,14 +12,14 @@
         ワイン名(必須)
       </div>
       <div>
-        <%= form.text_field :wine_name, placeholder: "カナ、英字どちらでも", class: "wine_name" %>
+        <%= form.text_field :wine_name, placeholder: "カナ、英字どちらでも", class: "wine_name", maxlength: "40" %>
       </div>
 
       <div class="navi">
         ワイン名フリガナ(任意)
       </div>
       <div>
-        <%= form.text_field :wine_name_kana, placeholder: "カタカナのみ", class: "wine_kana"%>
+        <%= form.text_field :wine_name_kana, placeholder: "カタカナのみ", class: "wine_kana", maxlength: "40" %>
       </div>
 
       <div class="navi">
@@ -47,14 +47,14 @@
         購入したお店(必須)
       </div>
       <div>
-        <%= form.text_field :wine_shop, placeholder: "例) ABCワイン", class:"shop" %>
+        <%= form.text_field :wine_shop, placeholder: "例) ABCワイン", class:"shop", maxlength: "40" %>
       </div>
 
       <div class="navi">
         タイトル(必須)
       </div>
       <div>
-        <%= form.text_field :title, placeholder: "例) コスパ良すぎ!", class:"title_new"%>
+        <%= form.text_field :title, placeholder: "例) コスパ良すぎ!", class:"title_new", maxlength: "40" %>
       </div>
 
       <div class="navi">
@@ -62,7 +62,7 @@
       </div>
       
       <div>
-        <%= form.text_area :comment, placeholder: "あなたの伝えたいこと", class:"comment_new"%>
+        <%= form.text_area :comment, placeholder: "あなたの伝えたいこと", class:"comment_new", maxlength: "200"%>
       </div>
 
       <div class="article_button_field">
