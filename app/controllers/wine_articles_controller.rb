@@ -13,6 +13,7 @@ class WineArticlesController < ApplicationController
     else
       render 'new'
     end
+  end
 
     private
     def wine_article_params
