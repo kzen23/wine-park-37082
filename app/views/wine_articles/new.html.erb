@@ -1,0 +1,73 @@
+<div class="wine_article_body">
+  <div class="wine_article_contents">
+    <%= form_with(model: @wine_article, local: true) do |form| %>
+        <div class="navi">
+          ワイン画像(必須)
+        </div>
+        <div>
+          <%= form.file_field :image %>
+        </div>
+    
+      <div class="navi">
+        ワイン名(必須)
+      </div>
+      <div>
+        <%= form.text_field :wine_name, placeholder: "カナ、英字どちらでも", class: "wine_name", maxlength: "40" %>
+      </div>
+
+      <div class="navi">
+        ワイン名フリガナ(任意)
+      </div>
+      <div>
+        <%= form.text_field :wine_name_kana, placeholder: "カタカナのみ", class: "wine_kana", maxlength: "40" %>
+      </div>
+
+      <div class="navi">
+        ワインの種類(必須)
+      </div>
+      <div>
+        <%= form.collection_select(:wine_type_id, WineType.all, :id, :name, {}, {class: "wine_type"}) %>
+      </div>
+
+      <div class="navi">
+        ワインの味(必須)
+      </div>
+      <div>
+        <%= form.collection_select(:wine_taste_id, WineTaste.all, :id, :name, {}, {class: "wine_taste"}) %>
+      </div>
+
+      <div class="navi">
+        ワインの値段(必須)
+      </div>
+      <div>
+        <%= form.text_field :wine_price, placeholder: "例) 300", class:"price" %>
+      </div>
+
+      <div class="navi">
+        購入したお店(必須)
+      </div>
+      <div>
+        <%= form.text_field :wine_shop, placeholder: "例) ABCワイン", class:"shop", maxlength: "40" %>
+      </div>
+
+      <div class="navi">
+        タイトル(必須)
+      </div>
+      <div>
+        <%= form.text_field :title, placeholder: "例) コスパ良すぎ!", class:"title_new", maxlength: "40" %>
+      </div>
+
+      <div class="navi">
+        コメント(必須)
+      </div>
+      
+      <div>
+        <%= form.text_area :comment, placeholder: "あなたの伝えたいこと", class:"comment_new", maxlength: "200"%>
+      </div>
+
+      <div class="article_button_field">
+        <%= form.submit :"投稿する", class: "article_button"%>
+      </div>
+    <% end %>
+  </div>
+</div>

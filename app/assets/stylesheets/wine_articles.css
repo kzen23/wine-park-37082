@@ -1,3 +1,4 @@
+/* indexページ */
 .index_deco{
   background-color: #a888be;
 }
@@ -30,4 +31,74 @@
 .caution{
   line-height: 1.5;
   padding: 0 5px 0 10px;
+}
+
+/* newページ */
+.wine_article_body{
+  background-color: #a888be;
+}
+
+.wine_article_contents{
+  display: flex;
+  justify-content: space-evenly;
+  margin: 0 auto;
+  width: 500px;
+  background-color: #bc917f;
+  border: 1px solid black;
+}
+
+.navi{
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+
+.wine_name{
+  width: 350px;
+  padding: 10px;
+}
+
+.wine_kana{
+  width: 350px;
+  padding: 10px;
+}
+
+.wine_type{
+  height: 40px;
+  padding: 10px;
+}
+
+.wine_taste{
+  width: 250px;
+  height: 40px;
+  padding: 10px;
+}
+
+.price{
+  width: 350px;
+  padding: 10px;
+}
+
+.shop{
+  width: 350px;
+  padding: 10px;
+}
+
+.title_new{
+  width: 350px;
+  padding: 10px;
+}
+
+.comment_new{
+  width: 350px;
+  height: 150px;
+  padding: 10px;
+}
+
+.article_button_field{
+  margin-bottom: 10px;
+  text-align: center;
+}
+
+.article_button{
+  padding: 5px;
 }
