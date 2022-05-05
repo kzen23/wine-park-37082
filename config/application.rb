@@ -10,6 +10,7 @@ module WinePark37082
   class Application < Rails::Application
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 6.0
+    config.active_storage.variable_content_types += ['image/heic', 'image/heic-sequence', 'image/heif', 'image/heif-sequence']
 
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration can go into files in config/initializers
