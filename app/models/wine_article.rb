@@ -2,7 +2,10 @@ class WineArticle < ApplicationRecord
   extend ActiveHash::Associations::ActiveRecordExtensions
   belongs_to :user
 
+  has_one_attached :image
+
   with_options presence: true do
+    validates :image
     validates :wine_name, length: {maximum: 40}
     validates :wine_price, numericality: { only_integer: true, message: 'is invalid. Input half width characters' },
                           length: {maximum: 40}

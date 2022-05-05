@@ -17,6 +17,6 @@ class WineArticlesController < ApplicationController
 
     private
     def wine_article_params
-      params.require(:wine_article).permit(:wine_name, :wine_name_kana, :wine_price, :wine_shop, :title, :comment, :wine_type_id, :wine_taste_id)
+      params.require(:wine_article).permit(:image, :wine_name, :wine_name_kana, :wine_price, :wine_shop, :title, :comment, :wine_type_id, :wine_taste_id).merge(user_id: current_user.id)
     end
 end
