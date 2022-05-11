@@ -1,3 +1,4 @@
+/* header */
 .header{
   display: flex;
   justify-content: center;
@@ -54,6 +55,7 @@
   font-size: 20px;
 }
 
+/* footer */
 .boss_footer{
   background-color: #a888be;
 }
@@ -64,7 +66,7 @@
   justify-content: center;
   margin: 0 auto;
   width: 500px;
-  height: 40px;
+  height: 21vh;
   background-color: azure;
   font-weight: bold;
   border: 1px solid black;

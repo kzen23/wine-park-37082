@@ -1,5 +1,6 @@
 class WineArticlesController < ApplicationController
   def index
+    @wine_articles = WineArticle.includes(:user).order("created_at DESC")
   end
 
   def new
