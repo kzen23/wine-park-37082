@@ -1,9 +1,20 @@
 <% if user_signed_in? %>
-  <%# new, create実装後に実装する %>
-  <h1>ログイン中<h1> 
+  <p class="index_navi">🥂皆の投稿一覧🥂</p>
+  <ul class="article_area">
+    <% @wine_articles.each do |wine_article| %>
+      <%= link_to "#",class: "link1", method: :get do %>
+        <li class="article_box">
+          <%= image_tag wine_article.image.variant(resize: '300x300'), class:"image_set" %>
+          <p class="article_info">記事のタイトル：<%= wine_article.title %></p>
+          <p class="article_info">ワインの値段：<%= wine_article.wine_price %>円</p>
+          <p class="article_info">投稿者：<%= wine_article.user.nickname %>さん</p>
+        </li>
+      <% end %>
+    <% end %>
+  </ul>
 <% else %>
   <div class= "index_deco" >
-    <div class="index_form" %>
+    <div class="index_form">
       <div class="information">Wine-Parkアプリへようこそ！</div>
     </div>
   <div class="index_form2">
