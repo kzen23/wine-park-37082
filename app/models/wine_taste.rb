@@ -14,5 +14,4 @@ class WineTaste < ActiveHash::Base
 
   include ActiveHash::Associations
   has_many :wine_articles
-  
 end

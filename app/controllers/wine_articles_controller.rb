@@ -1,6 +1,6 @@
 class WineArticlesController < ApplicationController
   def index
-    @wine_articles = WineArticle.includes(:user).order("created_at DESC")
+    @wine_articles = WineArticle.includes(:user).order('created_at DESC')
   end
 
   def new
@@ -16,8 +16,10 @@ class WineArticlesController < ApplicationController
     end
   end
 
-    private
-    def wine_article_params
-      params.require(:wine_article).permit(:image, :wine_name, :wine_name_kana, :wine_price, :wine_shop, :title, :comment, :wine_type_id, :wine_taste_id).merge(user_id: current_user.id)
-    end
+  private
+
+  def wine_article_params
+    params.require(:wine_article).permit(:image, :wine_name, :wine_name_kana, :wine_price, :wine_shop, :title, :comment,
+                                         :wine_type_id, :wine_taste_id).merge(user_id: current_user.id)
+  end
 end
