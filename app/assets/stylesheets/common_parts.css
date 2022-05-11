@@ -1,3 +1,4 @@
+/* header */
 .header{
   display: flex;
   justify-content: center;
@@ -54,6 +55,7 @@
   font-size: 20px;
 }
 
+/* footer */
 .boss_footer{
   background-color: #a888be;
 }
