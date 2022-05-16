@@ -2,7 +2,7 @@
   <p class="index_navi">🥂皆の投稿一覧🥂</p>
   <ul class="article_area">
     <% @wine_articles.each do |wine_article| %>
-      <%= link_to "#",class: "link1", method: :get do %>
+      <%= link_to wine_article_path(wine_article.id),class: "link1", method: :get do %>
         <li class="article_box">
           <%= image_tag wine_article.image.variant(resize: '300x300'), class:"image_set" %>
           <p class="article_info">記事のタイトル：<%= wine_article.title %></p>

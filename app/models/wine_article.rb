@@ -1,6 +1,8 @@
 class WineArticle < ApplicationRecord
   extend ActiveHash::Associations::ActiveRecordExtensions
   belongs_to :user
+  belongs_to :wine_type
+  belongs_to :wine_taste
 
   has_one_attached :image
 

@@ -16,6 +16,10 @@ class WineArticlesController < ApplicationController
     end
   end
 
+  def show
+    @wine_article = WineArticle.find(params[:id])
+  end
+
   private
 
   def wine_article_params
