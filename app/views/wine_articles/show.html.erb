@@ -1,0 +1,56 @@
+<div class="show_title">
+  <p class="show_value">
+    🍷この記事の詳細🍷
+  </p>
+</div>
+
+<div class= "image_box">
+  <%= image_tag @wine_article.image.variant(resize: '300x300'), class: "show_image" %>
+    <table>
+      <tr>
+        <th class="detail_wine">ワイン名</th>
+        <td class="detail_value"><%= @wine_article.wine_name %></td>
+      </tr>
+      <tr>
+        <th class="detail_wine">ワイン名ふりがな</th>
+        <td class="detail_value"><%= @wine_article.wine_name_kana %></td>
+      </tr>
+      <tr>
+        <th class="detail_wine">ワインの種類</th>
+        <td class="detail_value"><%= @wine_article.wine_type.name %></td>
+      </tr>
+      <tr>
+        <th class="detail_wine">ワインの味</th>
+        <td class="detail_value"><%= @wine_article.wine_taste.name %></td>
+      </tr>
+      <tr>
+        <th class="detail_wine">購入した値段</th>
+        <td class="detail_value"><%= @wine_article.wine_price %>円</td>
+      </tr>
+      <tr>
+        <th class="detail_wine">購入したお店</th>
+        <td class="detail_value"><%= @wine_article.wine_shop %></td>
+      </tr>
+    </table>
+    <% if @wine_article.user.id == current_user.id %>
+      <div class="about_link">
+        <%= link_to "編集する", "#", class: "edit_link" %>
+        <%= link_to "削除する", "#", class: "delete_link" %>
+      </div>
+    <% end %>
+</div>
+
+<div class="field_main">
+  <div class="theme_field">
+    <p class="theme_value">記事のタイトル</p>
+  </div>
+  <div class="title_field">
+    <p class="value_field"><%= @wine_article.title %></p>
+  </div>
+  <div class="theme_field">
+    <p class="theme_value">私の伝えたいこと</p>
+  </div>
+  <div class="comment_box">
+    <p class="comment_field"><%= @wine_article.comment %></p>
+  </div>
+</div>

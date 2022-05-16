@@ -133,3 +133,91 @@
 .article_button{
   padding: 5px;
 }
+
+/* showページ */
+.show_title{
+  height: 10vh;
+  position: relative;
+}
+
+.show_value{
+  position: absolute;
+  left: 105px;
+  top: 15px;
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.image_box{
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.detail_wine{
+  width: 15vw;
+  background-color: antiquewhite;
+  border: 1px solid black;
+  text-align: center;
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.detail_value{
+  width: 40vw;
+  background-color: #bc917f;
+  border: 1px solid black;
+  text-align: center;
+  font-size: 25px;
+  font-weight: bold;
+}
+
+.about_link{
+  display: flex;
+  flex-direction: column;
+  margin-left: 30px;
+}
+
+.edit_link{
+  font-size: 25px;
+}
+
+.delete_link{
+  font-size: 25px;
+}
+
+.field_main{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 20px;
+}
+
+.theme_field{
+  width: 40vw;
+  height: 7vh;
+  background-color: antiquewhite;
+  border: 1px solid black;
+  font-weight: bold;
+  text-align: center;
+}
+
+.title_field{
+  font-size: 20px;
+  background-color: aliceblue;
+}
+
+.value_field{
+  width: 40vw;
+  height: 20vh;
+  border: 1px solid black;
+}
+
+.comment_field{
+  width: 40vw;
+  height: 70vh;
+  border: 1px solid black;
+  font-size: 20px;
+  margin-bottom: 20px;
+  background-color: aliceblue;
+}
