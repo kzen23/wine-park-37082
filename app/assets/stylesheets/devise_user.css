@@ -84,6 +84,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  flex-direction: column;
   background-color: #a888be;
   color: #330000;
 }
@@ -102,9 +103,8 @@
 .login-flash-message{
   color: red;
   height: 0px; 
-  position: absolute;
-  top: 200px;
-  left: 450px;
+  background-color: #dddddd;
+  margin-bottom: 20px;
 }
 
 .boss_form2{
