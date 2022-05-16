@@ -8,5 +8,5 @@ Rails.application.routes.draw do
 
   root to: "wine_articles#index"
 
-  resources :wine_articles, only: [:index, :new, :create, :show, :destroy]
+  resources :wine_articles
 end

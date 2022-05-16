@@ -220,3 +220,9 @@
   margin-bottom: 20px;
   background-color: aliceblue;
 }
+
+/* editページ */
+.back_link{
+  font-size: 23px;
+  margin-left: 20px;
+}

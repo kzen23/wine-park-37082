@@ -34,7 +34,7 @@
     </table>
     <% if @wine_article.user.id == current_user.id %>
       <div class="about_link">
-        <%= link_to "編集する", "#", class: "edit_link" %>
+        <%= link_to "編集する", edit_wine_article_path(@wine_article.id), method: :get, class: "edit_link" %>
         <%= link_to "削除する", wine_article_path(@wine_article.id), method: :delete, class: "delete_link" %>
       </div>
     <% end %>
