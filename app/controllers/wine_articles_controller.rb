@@ -1,4 +1,6 @@
 class WineArticlesController < ApplicationController
+  before_action :authenticate_user!, except: [:index]
+
   def index
     @wine_articles = WineArticle.includes(:user).order('created_at DESC')
   end
