@@ -1,6 +1,7 @@
 class WineArticlesController < ApplicationController
   before_action :authenticate_user!, except: [:index]
-  before_action :check_user, only: [:destroy]
+  before_action :check_user, only: [:destroy, :edit]
+  before_action :set_wine_article, only: [:show, :destroy, :edit, :update]
 
   def index
     @wine_articles = WineArticle.includes(:user).order('created_at DESC')
@@ -20,13 +21,22 @@ class WineArticlesController < ApplicationController
   end
 
   def show
-    @wine_article = WineArticle.find(params[:id])
   end
 
   def destroy
-    @wine_article = WineArticle.find(params[:id])
     @wine_article.destroy
     redirect_to root_path
+  end
+
+  def edit
+  end
+
+  def update
+    if @wine_article.update(wine_article_params)
+      redirect_to wine_article_path(@wine_article.id)
+    else
+      render 'edit'
+    end
   end
 
   private
@@ -37,6 +47,11 @@ class WineArticlesController < ApplicationController
   end
 
   def check_user
-    redirect_to root_path unless @wine_article.user.id == current_user.id
+    @wine_article = WineArticle.find(params[:id])
+    redirect_to root_path unless current_user.id == @wine_article.user_id
+  end
+
+  def set_wine_article
+    @wine_article = WineArticle.find(params[:id])
   end
 end
