@@ -1,5 +1,6 @@
 class WineArticlesController < ApplicationController
   before_action :authenticate_user!, except: [:index]
+  before_action :check_user, only: [:destroy]
 
   def index
     @wine_articles = WineArticle.includes(:user).order('created_at DESC')
@@ -22,10 +23,20 @@ class WineArticlesController < ApplicationController
     @wine_article = WineArticle.find(params[:id])
   end
 
+  def destroy
+    @wine_article = WineArticle.find(params[:id])
+    @wine_article.destroy
+    redirect_to root_path
+  end
+
   private
 
   def wine_article_params
     params.require(:wine_article).permit(:image, :wine_name, :wine_name_kana, :wine_price, :wine_shop, :title, :comment,
                                          :wine_type_id, :wine_taste_id).merge(user_id: current_user.id)
+  end
+
+  def check_user
+    redirect_to root_path unless @wine_article.user.id == current_user.id
   end
 end
