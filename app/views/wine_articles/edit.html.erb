@@ -66,7 +66,8 @@
       </div>
 
       <div class="article_button_field">
-        <%= form.submit :"投稿する", class: "article_button"%>
+        <%= form.submit :"更新する", class: "article_button"%>
+        <%= link_to "もどる", wine_article_path(@wine_article.id), class: "back_link" %>
       </div>
     <% end %>
   </div>
