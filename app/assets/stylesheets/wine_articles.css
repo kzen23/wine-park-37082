@@ -232,6 +232,15 @@
   margin-left: 20px;
 }
 
+.root_link{
+  font-size: 25px;
+}
+
+.else_root_link{
+  font-size: 25px;
+  margin-left: 25px;
+}
+
 .comment_box{
   text-align: center;
 }
