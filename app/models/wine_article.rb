@@ -22,5 +22,4 @@ class WineArticle < ApplicationRecord
     validates :wine_type_id
     validates :wine_taste_id
   end
-
 end
