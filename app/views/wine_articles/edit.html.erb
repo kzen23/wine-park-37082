@@ -1,6 +1,11 @@
 <div class="wine_article_body">
   <div class="wine_article_contents">
     <%= form_with(model: @wine_article, local: true) do |form| %>
+      <div class="errors">
+        <%= render "devise/shared/error_messages", resource: @wine_article %>
+      </div>
+
+    <div class="form_box">
         <div class="navi">
           ワイン画像(必須)
         </div>
@@ -60,8 +65,9 @@
       <div class="navi">
         コメント(必須)
       </div>
-      
-      <div>
+    </div>
+
+      <div class="comment_box">
         <%= form.text_area :comment, placeholder: "あなたの伝えたいこと", class:"comment_new", maxlength: "200"%>
       </div>
 

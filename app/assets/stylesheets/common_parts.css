@@ -30,7 +30,7 @@
 }
 
 .field_with_errors{
-  display: contents;
+  text-align: center;
 }
 
 #error_explanation{

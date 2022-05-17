@@ -78,6 +78,10 @@
   border: 1px solid black;
 }
 
+.form_box{
+  text-align: center;
+}
+
 .navi{
   margin-bottom: 5px;
   font-weight: bold;
@@ -225,4 +229,8 @@
 .back_link{
   font-size: 23px;
   margin-left: 20px;
+}
+
+.comment_box{
+  text-align: center;
 }
