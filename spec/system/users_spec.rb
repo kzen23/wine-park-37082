@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-def basic_pass(path)
+def basic_auth(path)
   username = ENV['BASIC_AUTH_USER']
   password = ENV['BASIC_AUTH_PASSWORD']
   visit "http://#{username}:#{password}@#{Capybara.current_session.server.host}:#{Capybara.current_session.server.port}#{path}"
@@ -14,7 +14,7 @@ RSpec.describe 'Users', type: :system do
   context 'ユーザー新規登録ができるとき' do
     it '適切に情報を入力し、20歳以上ならばユーザー新規登録ができてトップページに移動する' do
       # Basic認証を通過する
-      basic_pass root_path
+      basic_auth root_path
       # トップページに移動したことを確認する
       expect(current_path).to eq(root_path)
       # トップページに新規登録のためのリンクがあることを確認する
@@ -49,11 +49,11 @@ RSpec.describe 'Users', type: :system do
   context 'ユーザー新規登録ができないとき' do
     it '適切に情報を入力しなければ新規登録ページに戻ってくる' do
       # Basic認証を通過する
-      basic_pass root_path
+      basic_auth root_path
       # トップページに移動したことを確認する
       expect(current_path).to eq(root_path)
       # トップページに新規登録のためのリンクがあることを確認する
-      expect(page).to have_content('新規登録')
+      expect(page).to have_link '新規登録', href: new_user_registration_path
       # 新規登録ページに移動する
       visit new_user_registration_path
       # ユーザー情報を入力する
@@ -77,11 +77,11 @@ RSpec.describe 'Users', type: :system do
     end
     it '適切に情報を入力しても20歳未満ならばユーザー新規登録ができずにトップページに戻ってくる' do
       # Basic認証を通過する
-      basic_pass root_path
+      basic_auth root_path
       # トップページに移動したことを確認する
       expect(current_path).to eq(root_path)
       # トップページに新規登録のためのリンクがあることを確認する
-      expect(page).to have_content('新規登録')
+      expect(page).to have_link '新規登録', href: new_user_registration_path
       # 新規登録ページに移動する
       visit new_user_registration_path
       # ユーザー情報を入力する
@@ -103,8 +103,8 @@ RSpec.describe 'Users', type: :system do
       # トップページへ遷移したことを確認する
       expect(current_path).to eq(root_path)
       # 遷移したトップページに新規登録とログインのためのリンクがあることを確認する
-      expect(page).to have_content('新規登録')
-      expect(page).to have_content('ログイン')
+      expect(page).to have_link '新規登録', href: new_user_registration_path
+      expect(page).to have_link 'ログイン', href: new_user_session_path
     end
   end
 end
@@ -117,36 +117,33 @@ RSpec.describe 'Users', type: :system do
   context 'ユーザーログインできるとき' do
     it '保存されているユーザーの情報を正しく入力すればログインできる' do
       # Basic認証を通過する
-      basic_pass root_path
+      basic_auth root_path
       # トップページに移動したことを確認する
       expect(current_path).to eq(root_path)
       # トップページにログインのためのリンクがあることを確認する
-      expect(page).to have_content('ログイン')
+      expect(page).to have_link 'ログイン', href: new_user_session_path
       # ログインページに移動する
       visit new_user_session_path
-      # ログインに必要な情報を入力する
-      fill_in 'Email', with: @user.email
-      fill_in 'Password', with: @user.password
-      # ログインボタンを押す
-      find('input[name="commit"]').click
+      # ログインする
+      sign_in(@user)
       # トップページへ遷移したことを確認する
       expect(current_path).to eq(root_path)
       # トップページにログアウトのリンクがあることを確認する
       expect(page).to have_content('ログアウト')
       # トップページに新規登録とログインのリンクがないことを確認する
-      expect(page).to have_no_content('新規登録')
-      expect(page).to have_no_content('ログイン')
+      expect(page).to have_no_link '新規登録', href: new_user_registration_path
+      expect(page).to have_no_link 'ログイン', href: new_user_session_path
     end
   end
 
   context 'ユーザーログインできないとき' do
     it '保存されているユーザーの情報を正しく入力しないとログインできない' do
       # Basic認証を通過する
-      basic_pass root_path
+      basic_auth root_path
       # トップページに移動したことを確認する
       expect(current_path).to eq(root_path)
       # トップページにログインのためのリンクがあることを確認する
-      expect(page).to have_content('ログイン')
+      expect(page).to have_link 'ログイン', href: new_user_session_path
       # ログインページに移動する
       visit new_user_session_path
       # フォームに情報を入力する
