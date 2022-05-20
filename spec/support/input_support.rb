@@ -23,6 +23,7 @@ module InputSupport
     fill_in 'wine_article_wine_shop', with: "なんでも酒やカクヤス池尻店"
     fill_in 'wine_article_title', with: "超コスパスパークリングワイン！！"
     fill_in 'wine_article_comment', with: "550円なのにこの美味さ！！おススメです！！"
+    return wine_article
   end
 
   def input_form_edit2
@@ -34,5 +35,16 @@ module InputSupport
     fill_in 'wine_article_wine_shop', with: "なんでも酒やカクヤス池尻店"
     fill_in 'wine_article_title', with: "超コスパスパークリングワイン！！"
     fill_in 'wine_article_comment', with: "550円なのにこの美味さ！！おススメです！！"
+  end
+
+  def input_form_edit3
+    fill_in 'wine_article_wine_name', with: ""
+    fill_in 'wine_article_wine_name_kana', with: ""
+    select '--', from: 'wine_article_wine_type_id'
+    select '--', from: 'wine_article_wine_taste_id'
+    fill_in 'wine_article_wine_price', with: nil
+    fill_in 'wine_article_wine_shop', with: ""
+    fill_in 'wine_article_title', with: ""
+    fill_in 'wine_article_comment', with: ""
   end
 end

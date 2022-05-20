@@ -172,7 +172,9 @@ end
           # 詳細ページに遷移したことを確認する
             expect(current_path).to eq(wine_article_path(@wine_article1.id))
           # 詳細ページの内容が編集した内容になっていることを確認する
-            input_edit_confirmation
+            input_edit_confirmation(@wine_article1)
+          # トップページへ移動する
+            visit root_path
           # トップページの内容が編集した内容になっていることを確認する
             input_index_confirmation(@wine_article1)
         end
@@ -197,13 +199,15 @@ end
             input_form_edit(@wine_article1)
             fill_in 'wine_article_wine_name_kana', with: ""
           # 編集してもモデルのアカウントが上がらないことを確認する
-          expect{click_on '更新する'}.to change { WineArticle.count }.by(0)
+            expect{click_on '更新する'}.to change { WineArticle.count }.by(0)
           # 詳細ページに遷移したことを確認する
-          expect(current_path).to eq(wine_article_path(@wine_article1.id))
+            expect(current_path).to eq(wine_article_path(@wine_article1.id))
           # 詳細ページの内容が編集した内容になっていることを確認する
-          input_edit_confirmation2
+            input_edit_confirmation2
+          # トップページへ移動する
+            visit root_path
           # トップページの内容が編集した内容になっていることを確認する
-          input_index_confirmation(@wine_article1)
+            input_index_confirmation(@wine_article1)
         end 
         it 'imageは、編集されなかったとしても過去の自分のワイン記事は編集出来る' do
           # Basic認証を通過する
@@ -230,12 +234,14 @@ end
             expect(current_path).to eq(wine_article_path(@wine_article1.id))
           # 詳細ページの内容が編集した内容になっていることを確認する
             input_edit_confirmation3
+          # トップページへ移動する
+            visit root_path
           # トップページの内容が編集した内容になっていることを確認する
-          input_index_confirmation2(@wine_article1)
+            input_index_confirmation2(@wine_article1)
         end
         it '以前と比べて、何も変更がなく、更新するのボタンを押したとしても過去の自分のワイン記事は編集出来る' do
           # Basic認証を通過する
-          basic_auth root_path
+            basic_auth root_path
           # トップページに移動したことを確認する
             expect(current_path).to eq(root_path)
           # ログインする
@@ -251,32 +257,200 @@ end
           # すでに投稿済みの内容がフォームに入っていることを確認する
             edit_confirmation(@wine_article1)
           # 編集してもモデルのアカウントが上がらないことを確認する
-          expect{click_on '更新する'}.to change { WineArticle.count }.by(0)
+            expect{click_on '更新する'}.to change { WineArticle.count }.by(0)
           # 詳細ページに遷移したことを確認する
             expect(current_path).to eq(wine_article_path(@wine_article1.id))
           # 詳細ページの内容が編集した内容になっていることを確認する
             input_edit_confirmation4(@wine_article1)
+          # トップページへ移動する
+            visit root_path
+          # トップページの内容が編集した内容になっていることを確認する
+            input_index_confirmation2(@wine_article1)
         end
       end
     end
     context '投稿されたワイン記事が編集出来ないとき' do
       it 'ログインしていなれば、ユーザーは、ワイン記事を編集出来ない' do
+        # Basic認証を通過する
+          basic_auth root_path
+        # トップページに移動したことを確認する
+          expect(current_path).to eq(root_path)
+        # 新規登録とログインのリンクがあることを確認する
+          expect(page).to have_link '新規登録', href: new_user_registration_path
+          expect(page).to have_link 'ログイン', href: new_user_session_path
+        # 編集ページへ移動するための編集するがないことを確認する
+          expect(page).to have_no_content("編集する")
+        # 直接URLを打ち込んで編集ページへ移動する
+          visit edit_wine_article_path(@wine_article1.id)
+        # ログイン画面に遷移したことを確認する
+          expect(current_path).to eq(new_user_session_path)
       end
       it 'ログインしていてもユーザーは、必要な値を入力しなければ、過去の自分のワイン記事は編集できない' do
+        # Basic認証を通過する
+          basic_auth root_path
+        # トップページに移動したことを確認する
+          expect(current_path).to eq(root_path)
+        # ログインする
+          sign_in_edit(@wine_article1.user)
+        # 投稿したワイン記事１をクリックする
+          find_link(all(".link1")[@wine_article1.id], href: wine_article_path(@wine_article1.id)).click
+        # 詳細ページに移動した事を確認する
+          expect(current_path).to eq wine_article_path(@wine_article1.id)
+        # 詳細ページ内に編集ページへのリンクがある事を確認する
+          expect(page).to have_link '編集する', href: edit_wine_article_path(@wine_article1.id)
+        # 編集ページへ移動する
+          visit edit_wine_article_path(@wine_article1.id)
+        # すでに投稿済みの内容がフォームに入っていることを確認する
+          edit_confirmation(@wine_article1)
+        # フォームを全て空にして更新するのボタンを押す
+          input_form_edit3
+        # 更新に失敗し、編集ページにとどまっている事を確認する
+          click_on '更新する'
+          expect(current_path).to eq(wine_article_path(@wine_article1.id))
       end
       it 'ログインしていて必要な値を入力してもユーザーは、もどるのリンクをクリックしたら過去の自分のワイン記事を編集できない' do
+        # Basic認証を通過する
+          basic_auth root_path
+        # トップページに移動したことを確認する
+          expect(current_path).to eq(root_path)
+        # ログインする
+          sign_in_edit(@wine_article1.user)
+        # 投稿したワイン記事１をクリックする
+          find_link(all(".link1")[@wine_article1.id], href: wine_article_path(@wine_article1.id)).click
+        # 詳細ページに移動した事を確認する
+          expect(current_path).to eq wine_article_path(@wine_article1.id)
+        # 詳細ページ内に編集ページへのリンクがある事を確認する
+          expect(page).to have_link '編集する', href: edit_wine_article_path(@wine_article1.id)
+        # 編集ページへ移動する
+          visit edit_wine_article_path(@wine_article1.id)
+        # すでに投稿済みの内容がフォームに入っていることを確認する
+          edit_confirmation(@wine_article1)
+        # wine_name_kanaのみ空欄にする
+          fill_in 'wine_article_wine_name_kana', with: ""
+        # もどるのリンクをクリックする
+          click_on 'もどる'
+        # 詳細ページへ遷移したことを確認する
+          expect(current_path).to eq(wine_article_path(@wine_article1.id))
+        # 詳細ページの内容が変わっていないことを確認する
+          input_edit_confirmation4(@wine_article1)
+        # トップページへ移動する
+          visit root_path
+        # トップページの内容が変わっていないことを確認する
+          input_index_confirmation2(@wine_article1)
       end
       it 'ログインしていて必要な値を入力してもユーザーは、ログアウトのリンクをクリックしたら過去の自分のワイン記事を編集出来ない' do
+        # Basic認証を通過する
+          basic_auth root_path
+        # トップページに移動したことを確認する
+          expect(current_path).to eq(root_path)
+        # ログインする
+          sign_in_edit(@wine_article1.user)
+        # 投稿したワイン記事１をクリックする
+          find_link(all(".link1")[@wine_article1.id], href: wine_article_path(@wine_article1.id)).click
+        # 詳細ページに移動した事を確認する
+          expect(current_path).to eq wine_article_path(@wine_article1.id)
+        # 詳細ページ内に編集ページへのリンクがある事を確認する
+          expect(page).to have_link '編集する', href: edit_wine_article_path(@wine_article1.id)
+        # 編集ページへ移動する
+          visit edit_wine_article_path(@wine_article1.id)
+        # すでに投稿済みの内容がフォームに入っていることを確認する
+          edit_confirmation(@wine_article1)
+        # wine_name_kanaのみ空欄にする
+          fill_in 'wine_article_wine_name_kana', with: ""
+        # ログアウトのリンクをクリックする
+          click_on 'ログアウト'
+        # トップページに遷移したことを確認する
+          expect(current_path).to eq(root_path)
+        # ログインする
+          sign_in_edit(@wine_article1.user)
+        # トップページの内容が変わっていないことを確認する
+          input_index_confirmation2(@wine_article1)
+        # 詳細ページに移動する
+          visit wine_article_path(@wine_article1.id)
+        # 詳細ページの内容が変わっていないことを確認する
+          input_edit_confirmation4(@wine_article1)
       end
       it 'ログインしていて必要な値を入力してもユーザーは、投稿するのリンクをクリックしたら過去の自分のワイン記事を編集出来ない' do
+        # Basic認証を通過する
+          basic_auth root_path
+        # トップページに移動したことを確認する
+          expect(current_path).to eq(root_path)
+        # ログインする
+          sign_in_edit(@wine_article1.user)
+        # 投稿したワイン記事１をクリックする
+          find_link(all(".link1")[@wine_article1.id], href: wine_article_path(@wine_article1.id)).click
+        # 詳細ページに移動した事を確認する
+          expect(current_path).to eq wine_article_path(@wine_article1.id)
+        # 詳細ページ内に編集ページへのリンクがある事を確認する
+          expect(page).to have_link '編集する', href: edit_wine_article_path(@wine_article1.id)
+        # 編集ページへ移動する
+          visit edit_wine_article_path(@wine_article1.id)
+        # すでに投稿済みの内容がフォームに入っていることを確認する
+          edit_confirmation(@wine_article1)
+        # wine_name_kanaのみ空欄にする
+          fill_in 'wine_article_wine_name_kana', with: ""
+        # 投稿するのリンクをクリックする
+          click_on '投稿する'
+        # 新規投稿ページに遷移したことを確認する
+          expect(current_path).to eq(new_wine_article_path)
+        # トップページへ移動する
+          visit root_path
+        # トップページの内容が変わっていないことを確認する
+          input_index_confirmation2(@wine_article1)
+        # 詳細ページへ移動する
+          visit wine_article_path(@wine_article1.id)
+        # 詳細ページの内容が変わっていないことを確認する
+          input_edit_confirmation4(@wine_article1)
       end
       it 'ログインしていて必要な値を入力してもユーザーは、Wine-Park♪のロゴをクリックしたら過去の自分のワイン記事を編集出来ない' do
-      end
-      it 'ログインしていて必要な値を入力してもユーザーは、自身のニックネームのリンクをクリックしたら過去の自分のワイン記事を編集出来ない' do
+        # Basic認証を通過する
+          basic_auth root_path
+        # トップページに移動したことを確認する
+          expect(current_path).to eq(root_path)
+        # ログインする
+          sign_in_edit(@wine_article1.user)
+        # 投稿したワイン記事１をクリックする
+          find_link(all(".link1")[@wine_article1.id], href: wine_article_path(@wine_article1.id)).click
+        # 詳細ページに移動した事を確認する
+          expect(current_path).to eq wine_article_path(@wine_article1.id)
+        # 詳細ページ内に編集ページへのリンクがある事を確認する
+          expect(page).to have_link '編集する', href: edit_wine_article_path(@wine_article1.id)
+        # 編集ページへ移動する
+          visit edit_wine_article_path(@wine_article1.id)
+        # すでに投稿済みの内容がフォームに入っていることを確認する
+          edit_confirmation(@wine_article1)
+        # wine_name_kanaのみ空欄にする
+          fill_in 'wine_article_wine_name_kana', with: ""
+        # Wine-park♪のロゴをクリックする
+          click_on 'Wine-Park♪'
+        # トップページへ遷移したことを確認する
+          expect(current_path).to eq(root_path)
+        # トップページの内容が変わっていないことを確認する
+          input_index_confirmation2(@wine_article1)
+        # 詳細ページへ移動する
+          visit wine_article_path(@wine_article1.id)
+        # 詳細ページの内容が変わっていないことを確認する
+          input_edit_confirmation4(@wine_article1.id)
       end
       it 'ログインしていてもユーザーは、自分が過去に投稿したワイン記事でなければ編集出来ない' do
+        # Basic認証を通過する
+          basic_auth root_path
+        # トップページに移動したことを確認する
+          expect(current_path).to eq(root_path)
+        # ログインする
+          sign_in_edit(@wine_article1.user)
+        # 投稿したワイン記事２をクリックする
+          find_link(all(".link1")[@wine_article2.id], href: wine_article_path(@wine_article2.id)).click
+        # 詳細ページに移動した事を確認する
+          expect(current_path).to eq wine_article_path(@wine_article2.id) 
+        # 編集するのリンクがないことを確認する
+          expect(page).to have_no_link '編集する', href: edit_wine_article_path(@wine_article2.id)
+        # 直接URLを打ち込んで編集ページへ移動する
+          visit edit_wine_article_path(@wine_article2.id)
+        # トップページへ遷移したことを確認する
+          expect(current_path).to eq(root_path)
       end
-      it 'ログインしているユーザーが他のユーザーの編集ページへのURLを直接、入力したとしても自分が過去に投稿したワイン記事以外は編集出来ない' do
+      it 'ログインしていて必要な値を入力してもユーザーは、自身のニックネームのリンクをクリックしたら過去の自分のワイン記事を編集出来ない' do
       end
     end
   end

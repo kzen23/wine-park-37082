@@ -11,7 +11,7 @@ module ConfirmaitonSupport
     expect(find('#wine_article_comment').value).to eq(@wine_article1.comment)
   end
 
-  def input_edit_confirmation
+  def input_edit_confirmation(wine_article)
     expect(page).to have_selector("img[src$='test_wine2.jpeg']")
     expect(page).to have_content("Heretat El Padnell")
     expect(page).to have_content("エレタットエルパドゥルエル")
@@ -60,7 +60,6 @@ module ConfirmaitonSupport
   end
 
   def input_index_confirmation(wine_article)
-    click_on 'もどる'
     expect(page).to have_selector("img[src$='test_wine2.jpeg']")
     expect(page).to have_content(@wine_article1.title)
     expect(page).to have_content(@wine_article1.wine_price)
@@ -68,7 +67,6 @@ module ConfirmaitonSupport
   end
 
   def input_index_confirmation2(wine_article)
-    click_on 'もどる'
     expect(page).to have_selector("img[src$='test_wine.jpeg']")
     expect(page).to have_content(@wine_article1.title)
     expect(page).to have_content(@wine_article1.wine_price)
