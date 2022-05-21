@@ -1,0 +1,47 @@
+/* 詳細ページのコメント機能関連(wine_article.cssのものも一部使用) */
+.field_main{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 20px;
+}
+
+.comment_field{
+  width: 40vw;
+  height: 70vh;
+  border: 1px solid black;
+  font-size: 20px;
+  margin-bottom: 20px;
+  background-color: aliceblue;
+  text-align: left;
+}
+
+.comment_index{
+  width: 40vw;
+  height: 97.7vh;
+  border: 1px solid black;
+  font-size: 20px;
+  margin-bottom: 20px;
+  background-color: aliceblue;
+  text-align: left;
+}
+
+.link_main{
+  display: flex;
+  flex-direction: column;
+  margin-top: 20px;
+}
+
+.comment_link{
+  font-size: 20px;
+}
+
+.comment_edit{
+  font-size: 20px;
+  margin-top: 5px;
+}
+
+.comment_destroy{
+  font-size: 20px;
+  margin-top: 5px;
+}

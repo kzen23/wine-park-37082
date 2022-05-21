@@ -189,11 +189,9 @@
   font-size: 25px;
 }
 
-.field_main{
+.big_field{
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin-top: 20px;
+  justify-content: space-around;
 }
 
 .theme_field{
@@ -214,16 +212,6 @@
   width: 40vw;
   height: 20vh;
   border: 1px solid black;
-}
-
-.comment_field{
-  width: 40vw;
-  height: 70vh;
-  border: 1px solid black;
-  font-size: 20px;
-  margin-bottom: 20px;
-  background-color: aliceblue;
-  text-align: left;
 }
 
 /* editページ */
