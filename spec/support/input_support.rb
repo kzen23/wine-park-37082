@@ -12,6 +12,19 @@ module InputSupport
     fill_in 'wine_article_comment', with: @wine_article.comment
   end
 
+  def input_form2(_wine_article)
+    image_path = Rails.root.join('public/images/test_wine.jpeg')
+    attach_file('wine_article[image]', image_path, make_visible: true)
+    fill_in 'wine_article_wine_name', with: @wine_article1.wine_name
+    fill_in 'wine_article_wine_name_kana', with: @wine_article1.wine_name_kana
+    select '白ワイン', from: 'wine_article_wine_type_id'
+    select '辛口', from: 'wine_article_wine_taste_id'
+    fill_in 'wine_article_wine_price', with: @wine_article1.wine_price
+    fill_in 'wine_article_wine_shop', with: @wine_article1.wine_shop
+    fill_in 'wine_article_title', with: @wine_article1.title
+    fill_in 'wine_article_comment', with: @wine_article1.comment
+  end
+
   def input_form_edit(wine_article)
     image_path = Rails.root.join('public/images/test_wine2.jpeg')
     attach_file('wine_article[image]', image_path, make_visible: true)

@@ -170,14 +170,15 @@ RSpec.describe 'WineArticles', type: :system do
         input_form_edit(@wine_article1)
         # 編集してもモデルのアカウントが上がらないことを確認する
         expect { click_on '更新する' }.to change { WineArticle.count }.by(0)
-        # 詳細ページに遷移したことを確認する
-        expect(current_path).to eq(wine_article_path(@wine_article1.id))
-        # 詳細ページの内容が編集した内容になっていることを確認する
-        input_edit_confirmation(@wine_article1)
-        # トップページへ移動する
-        visit root_path
+        # トップページに遷移したことを確認する
+        expect(current_path).to eq(root_path)
         # トップページの内容が編集した内容になっていることを確認する
         input_index_confirmation(@wine_article1)
+        # 詳細ページに移動する
+        visit wine_article_path(@wine_article1.id)
+        # 詳細ページの内容が編集した内容になっていることを確認する
+        input_edit_confirmation(@wine_article1)
+        
       end
       it 'wine_name_kanaは、あってもなくても過去の自分のワイン記事は編集出来る' do
         # Basic認証を通過する
@@ -201,14 +202,14 @@ RSpec.describe 'WineArticles', type: :system do
         fill_in 'wine_article_wine_name_kana', with: ''
         # 編集してもモデルのアカウントが上がらないことを確認する
         expect { click_on '更新する' }.to change { WineArticle.count }.by(0)
-        # 詳細ページに遷移したことを確認する
-        expect(current_path).to eq(wine_article_path(@wine_article1.id))
-        # 詳細ページの内容が編集した内容になっていることを確認する
-        input_edit_confirmation2
-        # トップページへ移動する
-        visit root_path
+        # トップページに遷移したことを確認する
+        expect(current_path).to eq(root_path)
         # トップページの内容が編集した内容になっていることを確認する
         input_index_confirmation(@wine_article1)
+        # 詳細ページへ移動する
+        visit wine_article_path(@wine_article1.id)
+        # 詳細ページの内容が編集した内容になっていることを確認する
+        input_edit_confirmation2
       end
       it 'imageは、編集されなかったとしても過去の自分のワイン記事は編集出来る' do
         # Basic認証を通過する
@@ -228,17 +229,19 @@ RSpec.describe 'WineArticles', type: :system do
         # すでに投稿済みの内容がフォームに入っていることを確認する
         edit_confirmation(@wine_article1)
         # 画像を除いた投稿内容を編集する
-        input_form_edit2
+        input_form2(@wine_article1)
+        fill_in 'wine_article_wine_name_kana', with: ""
         # 編集してもモデルのアカウントが上がらないことを確認する
         expect { click_on '更新する' }.to change { WineArticle.count }.by(0)
-        # 詳細ページに遷移したことを確認する
-        expect(current_path).to eq(wine_article_path(@wine_article1.id))
-        # 詳細ページの内容が編集した内容になっていることを確認する
-        input_edit_confirmation3
-        # トップページへ移動する
-        visit root_path
+        # トップページに遷移したことを確認する
+        expect(current_path).to eq(root_path)
         # トップページの内容が編集した内容になっていることを確認する
         input_index_confirmation2(@wine_article1)
+        # 詳細ページへ移動する
+        visit wine_article_path(@wine_article1.id)
+        # 詳細ページの内容が編集した内容になっていることを確認する
+        input_edit_confirmation3
+        
       end
       it '以前と比べて、何も変更がなく、更新するのボタンを押したとしても過去の自分のワイン記事は編集出来る' do
         # Basic認証を通過する
@@ -259,14 +262,14 @@ RSpec.describe 'WineArticles', type: :system do
         edit_confirmation(@wine_article1)
         # 編集してもモデルのアカウントが上がらないことを確認する
         expect { click_on '更新する' }.to change { WineArticle.count }.by(0)
-        # 詳細ページに遷移したことを確認する
-        expect(current_path).to eq(wine_article_path(@wine_article1.id))
-        # 詳細ページの内容が編集した内容になっていることを確認する
-        input_show_confirmation(@wine_article1.id)
-        # トップページへ移動する
-        visit root_path
+        # トップページに遷移したことを確認する
+        expect(current_path).to eq(root_path)
         # トップページの内容が編集した内容になっていることを確認する
         input_index_confirmation2(@wine_article1)
+        # 詳細ページへ移動する
+        visit wine_article_path(@wine_article1.id)
+        # 詳細ページの内容が編集した内容になっていることを確認する
+        input_show_confirmation(@wine_article1.id)
       end
     end
   end
