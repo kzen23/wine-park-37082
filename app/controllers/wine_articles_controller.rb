@@ -33,7 +33,7 @@ class WineArticlesController < ApplicationController
 
   def update
     if @wine_article.update(wine_article_params)
-      redirect_to wine_article_path(@wine_article.id)
+      redirect_to root_path
     else
       render 'edit'
     end
