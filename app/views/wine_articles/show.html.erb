@@ -41,22 +41,41 @@
     <% else %>
         <%= link_to "もどる", root_path, method: :get, class: "else_root_link" %>
     <% end %>
-    <div>
-      
-    </div>
 </div>
 
-<div class="field_main">
-  <div class="theme_field">
-    <p class="theme_value">記事のタイトル</p>
+<div class="big_field">
+  <div class="field_main">
+    <div class="theme_field">
+      <p class="theme_value">記事のタイトル</p>
+    </div>
+    <div class="title_field">
+      <p class="value_field"><%= @wine_article.title %></p>
+    </div>
+    <div class="theme_field">
+      <p class="theme_value">私の伝えたいこと</p>
+    </div>
+    <div class="comment_box">
+      <p class="comment_field"><%= @wine_article.comment %></p>
+    </div>
   </div>
-  <div class="title_field">
-    <p class="value_field"><%= @wine_article.title %></p>
+
+  <div class="field_main">
+    <div class="theme_field">
+      <p class="theme_value">あなたへのコメント一覧</p>
+    </div>
+    <div class="comment_box">
+          <%# 投稿機能実装後、一覧機能を表示する場所 %>
+      <p class="comment_index"></p>
+          <%# 一覧機能を表示する場所 %>
+    </div>
   </div>
-  <div class="theme_field">
-    <p class="theme_value">私の伝えたいこと</p>
+
+  <div class="link_main">
+    <%= link_to 'コメントする', "#", class: "comment_link" %>
+    <% if current_user.id == @wine_article.user.id %>
+      <%= link_to 'コメントを編集する', "#", class: "comment_edit" %>
+      <%= link_to 'コメントを削除する', "#", class: "comment_destroy" %>
+    <% end %>
   </div>
-  <div class="comment_box">
-    <p class="comment_field"><%= @wine_article.comment %></p>
-  </div>
+
 </div>

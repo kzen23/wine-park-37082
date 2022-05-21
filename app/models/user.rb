@@ -23,4 +23,5 @@ class User < ApplicationRecord
   end
 
   has_many :wine_articles
+  has_many :comments
 end
