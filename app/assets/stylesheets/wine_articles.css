@@ -36,7 +36,7 @@
 
 .index_form{
   background-color: #bc917f;
-  width: 500px;
+  width: 40vw;
   height: 200px;
   margin: 0 auto;
   font-weight: bold;
@@ -49,7 +49,7 @@
 
 .index_form2{
   background-color: #dddddd;
-  width: 500px;
+  width: 40vw;
   height: 250px;
   margin: 0 auto;
   color: red;

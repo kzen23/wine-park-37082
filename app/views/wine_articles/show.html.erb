@@ -64,14 +64,17 @@
       <p class="theme_value">あなたへのコメント一覧</p>
     </div>
     <div class="comment_box">
-          <%# 投稿機能実装後、一覧機能を表示する場所 %>
-      <p class="comment_index"></p>
-          <%# 一覧機能を表示する場所 %>
+      <p class="comment_index">
+        <% @comments.each do |comment| %>
+            <%= link_to comment.user.nickname, "#", class: "name_link" %>:
+            <%= comment.text %><br />
+        <% end %>
+      </p>
     </div>
   </div>
 
   <div class="link_main">
-    <%= link_to 'コメントする', "#", class: "comment_link" %>
+    <%= link_to 'コメントする', new_wine_article_comment_path(@wine_article.id), class: "comment_link" %>
     <% if current_user.id == @wine_article.user.id %>
       <%= link_to 'コメントを編集する', "#", class: "comment_edit" %>
       <%= link_to 'コメントを削除する', "#", class: "comment_destroy" %>

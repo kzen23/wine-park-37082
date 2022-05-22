@@ -9,7 +9,7 @@
 .sub_title{
   text-align: center;
   background-color: #bc917f;
-  width: 500px;
+  width: 40vw;
   padding: 40px 0;
   margin: 0px;
   border: 1px solid black;
@@ -27,7 +27,7 @@
 }
 
 .boss_form{
-  width: 500px;
+  width: 40vw;
   height: 650px;
   background-color: #dddddd;
   margin: 0 auto;
@@ -90,26 +90,28 @@
 }
 
 .title_deco{
-  text-align: center;
-  width: 500px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 40vw;
+  height: 20vh;
   background-color: #bc917f;
-  padding: 40px 0;
   border: 1px solid black;
   font-size: 25px;
   font-weight: bold;
-  position: relative;
 }
 
 .login-flash-message{
+  display: flex;
+  justify-content: center;
   color: red;
   height: 0px; 
   background-color: #dddddd;
-  margin-bottom: 20px;
 }
 
 .boss_form2{
   margin: 0 auto;
-  width: 500px;
+  width: 40vw;
   height: 380px;
   background-color: #dddddd;
   border: 1px solid black;

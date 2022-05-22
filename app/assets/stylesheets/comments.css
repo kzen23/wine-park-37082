@@ -18,7 +18,7 @@
 
 .comment_index{
   width: 40vw;
-  height: 97.7vh;
+  height: auto;
   border: 1px solid black;
   font-size: 20px;
   margin-bottom: 20px;
@@ -44,4 +44,29 @@
 .comment_destroy{
   font-size: 20px;
   margin-top: 5px;
+}
+
+/* コメント新規投稿画面 */
+.new_comment{
+  display: flex;
+  justify-content: center;
+  margin: 20px 0;
+}
+
+.new_comment_value{
+  padding: 10px;
+  font-size: 18px;
+  font-weight: bold;
+  border: 1px solid black;
+}
+
+.submit_position{
+  text-align: center;
+}
+
+.comment_submit{
+  width: 130px;
+  height: 40px;
+  margin-top: 10px;
+  font-weight: bold;
 }
