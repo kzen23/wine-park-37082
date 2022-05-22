@@ -8,12 +8,14 @@
 }
 
 .title{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 40vw;
+  height: 25vh;
   background-color: #c5b2d6;
   color: #b50099;
-  text-align: center;
-  width: 500px;
   padding: 40px 0;
-  margin: 0px;
   border: 1px solid black;
   font-weight: bold;
   font-size: 30px;
@@ -57,16 +59,17 @@
 
 /* footer */
 .boss_footer{
+  display: flex;
+  justify-content: center;
   background-color: #a888be;
 }
 
-.footer{
+.footer_logo{
   display: flex;
   align-items: center;
   justify-content: center;
-  margin: 0 auto;
-  width: 500px;
-  height: 21vh;
+  width: 40vw;
+  height: 36vh;
   background-color: azure;
   font-weight: bold;
   border: 1px solid black;
