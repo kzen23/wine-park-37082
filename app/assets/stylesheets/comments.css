@@ -18,7 +18,7 @@
 
 .comment_index{
   width: 40vw;
-  height: 97.7vh;
+  height: auto;
   border: 1px solid black;
   font-size: 20px;
   margin-bottom: 20px;
