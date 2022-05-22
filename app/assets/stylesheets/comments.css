@@ -45,3 +45,21 @@
   font-size: 20px;
   margin-top: 5px;
 }
+
+/* コメント新規投稿画面 */
+.new_comment{
+  display: flex;
+  justify-content: center;
+  margin: 20px 0;
+}
+
+.submit_position{
+  text-align: center;
+}
+
+.comment_submit{
+  width: 130px;
+  height: 40px;
+  margin-top: 10px;
+  font-weight: bold;
+}
