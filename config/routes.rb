@@ -9,7 +9,7 @@ Rails.application.routes.draw do
   root to: "wine_articles#index"
 
   resources :wine_articles do
-    resources :comments, only: [:new, :create]
+    resources :comments, only: [:new, :create, :edit, :update]
   end
 
 end
