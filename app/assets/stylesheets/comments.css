@@ -53,6 +53,13 @@
   margin: 20px 0;
 }
 
+.new_comment_value{
+  padding: 10px;
+  font-size: 18px;
+  font-weight: bold;
+  border: 1px solid black;
+}
+
 .submit_position{
   text-align: center;
 }

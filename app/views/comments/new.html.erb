@@ -1,7 +1,7 @@
 <div class="new_comment">
     <%= form_with(model: [@wine_article, @comment], local: true) do |form| %>
     <div>  
-      <%= form.text_area :text, placeholder: "コメントする", rows: 10, cols: 58 %>
+      <%= form.text_area :text, placeholder: "コメントする", class: "new_comment_value", rows: 10, cols: 58 %>
     </div>
     <div class="submit_position">
       <%= form.submit "コメントする", class: "comment_submit"%>
