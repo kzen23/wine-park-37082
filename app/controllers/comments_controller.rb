@@ -2,7 +2,7 @@ class CommentsController < ApplicationController
   before_action :authenticate_user!
   before_action :check_user, only: [:edit, :update]
   before_action :set_wine_article, only: [:new, :create, :edit, :update]
-  before_action :set_comment, only: [:edit, :update]
+  before_action :set_comment, only: [:edit, :update, :destroy]
 
   def new
     @comment = Comment.new
@@ -26,6 +26,11 @@ class CommentsController < ApplicationController
     else
       render 'edit'
     end
+  end
+
+  def destroy
+    @comment.destroy
+    redirect_to wine_article_path(params[:wine_article_id])
   end
 
   private
