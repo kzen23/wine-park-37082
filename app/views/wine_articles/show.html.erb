@@ -70,7 +70,7 @@
             <%= comment.text %>
           <% if current_user.id == comment.user.id %>
             <%= link_to "編集", edit_wine_article_comment_path(@wine_article, comment) %>
-            <%= link_to "削除", "#" %>
+            <%= link_to "削除", wine_article_comment_path(@wine_article, comment), method: :delete %>
           <% end %><br />
         <% end %>
       </p>
