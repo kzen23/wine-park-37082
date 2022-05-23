@@ -12,7 +12,7 @@ class CommentsController < ApplicationController
     @comment = Comment.new(comment_params)
     if @comment.save
       redirect_to wine_article_path(params[:wine_article_id])
-    else 
+    else
       render 'new'
     end
   end
@@ -29,12 +29,13 @@ class CommentsController < ApplicationController
   end
 
   private
+
   def comment_params
     params.require(:comment).permit(:text).merge(user_id: current_user.id, wine_article_id: params[:wine_article_id])
   end
 
   def set_wine_article
-    @wine_article =WineArticle.find(params[:wine_article_id])
+    @wine_article = WineArticle.find(params[:wine_article_id])
   end
 
   def set_comment

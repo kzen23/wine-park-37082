@@ -178,7 +178,6 @@ RSpec.describe 'WineArticles', type: :system do
         visit wine_article_path(@wine_article1.id)
         # 詳細ページの内容が編集した内容になっていることを確認する
         input_edit_confirmation(@wine_article1)
-        
       end
       it 'wine_name_kanaは、あってもなくても過去の自分のワイン記事は編集出来る' do
         # Basic認証を通過する
@@ -230,7 +229,7 @@ RSpec.describe 'WineArticles', type: :system do
         edit_confirmation(@wine_article1)
         # 画像を除いた投稿内容を編集する
         input_form2(@wine_article1)
-        fill_in 'wine_article_wine_name_kana', with: ""
+        fill_in 'wine_article_wine_name_kana', with: ''
         # 編集してもモデルのアカウントが上がらないことを確認する
         expect { click_on '更新する' }.to change { WineArticle.count }.by(0)
         # トップページに遷移したことを確認する
@@ -241,7 +240,6 @@ RSpec.describe 'WineArticles', type: :system do
         visit wine_article_path(@wine_article1.id)
         # 詳細ページの内容が編集した内容になっていることを確認する
         input_edit_confirmation3
-        
       end
       it '以前と比べて、何も変更がなく、更新するのボタンを押したとしても過去の自分のワイン記事は編集出来る' do
         # Basic認証を通過する
