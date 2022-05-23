@@ -1,6 +1,6 @@
 class WineArticlesController < ApplicationController
   before_action :authenticate_user!, except: [:index]
-  before_action :check_user, only: [:destroy, :edit]
+  before_action :check_user, only: [:destroy, :edit, :update]
   before_action :set_wine_article, only: [:show, :destroy, :edit, :update]
 
   def index

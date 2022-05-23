@@ -67,7 +67,11 @@
       <p class="comment_index">
         <% @comments.each do |comment| %>
             <%= link_to comment.user.nickname, "#", class: "name_link" %>:
-            <%= comment.text %><br />
+            <%= comment.text %>
+          <% if current_user.id == comment.user.id %>
+            <%= link_to "編集", edit_wine_article_comment_path(@wine_article, comment) %>
+            <%= link_to "削除", "#" %>
+          <% end %><br />
         <% end %>
       </p>
     </div>
@@ -75,10 +79,5 @@
 
   <div class="link_main">
     <%= link_to 'コメントする', new_wine_article_comment_path(@wine_article.id), class: "comment_link" %>
-    <% if current_user.id == @wine_article.user.id %>
-      <%= link_to 'コメントを編集する', "#", class: "comment_edit" %>
-      <%= link_to 'コメントを削除する', "#", class: "comment_destroy" %>
-    <% end %>
   </div>
-
 </div>
