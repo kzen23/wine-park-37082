@@ -1,5 +1,9 @@
 <div class="new_comment">
     <%= form_with(model: [@wine_article, @comment], local: true) do |form| %>
+    <div class="errors">
+      <%= render "devise/shared/error_messages", resource: @comment %>
+    </div>
+
     <div>  
       <%= form.text_area :text, placeholder: "コメントする", class: "new_comment_value", rows: 10, cols: 58 %>
     </div>
