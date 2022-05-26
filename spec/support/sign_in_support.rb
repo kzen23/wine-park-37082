@@ -14,4 +14,12 @@ module SignInSupport
     click_on('ログインする')
     expect(current_path).to eq(root_path)
   end
+
+  def sign_in2(_wine_article)
+    visit new_user_session_path
+    fill_in 'Email', with: @wine_article.user.email
+    fill_in 'Password', with: @wine_article.user.password
+    click_on('ログインする')
+    expect(current_path).to eq(root_path)
+  end
 end
