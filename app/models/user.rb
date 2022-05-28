@@ -24,4 +24,12 @@ class User < ApplicationRecord
 
   has_many :wine_articles
   has_many :comments
+
+  # フォローする、されたの関係性
+  has_many :relationships, class_name: "Relationship", foreign_key: "user_follows_id", dependent: :destroy
+  has_many :reverse_of_relationships, class_name: "Relationship", foreign_key: "user_followed_id", dependent: :destroy
+  # 実装で使うための記述、フォローされてる側
+  has_many :followed, through: :relationships, source: :user_followed
+  # フォローしてる側
+  has_many :follows, through: :reverse_of_relationships, class_name: "Relationship", source: :user_follows
 end
