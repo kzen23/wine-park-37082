@@ -32,4 +32,16 @@ class User < ApplicationRecord
   has_many :followed, through: :relationships, source: :user_followed
   # フォローしてる側
   has_many :follows, through: :reverse_of_relationships, class_name: "Relationship", source: :user_follows
+
+  def follow(user_id)
+    relationships.create(user_followed_id: user_id)
+  end
+
+  def unfollow(user_id)
+    relationships.find_by(user_followed_id: user_id).destroy
+  end
+
+  def followed?(user)
+    followed.include?(user)
+  end
 end
