@@ -71,10 +71,10 @@ belongs_to :wine_article
 
 ## Relationshipsテーブル
 
-| Column                  | Type       | Options        |
-|-------------------------|------------|----------------|
-| follows_user_id         | integer    | null: false    |
-| followed_user_id        | integer    | null: false    |
+| Column                  | Type       | Options |
+|-------------------------|------------|---------|
+| follows_user_id         | integer    |         |
+| followed_user_id        | integer    |         |
 
 ## Association
 belongs_to :follows_user_id, class_name: "User"
