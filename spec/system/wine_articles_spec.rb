@@ -521,7 +521,7 @@ RSpec.describe 'WineArticles', type: :system do
   end
   describe 'ワイン投稿記事詳細機能' do
     context 'ワイン投稿記事の詳細が見れるとき' do
-      it 'ログインしたユーザーは投稿されたすべてのワイン記事の詳細を見ることができる' do
+      it 'ログインしたユーザーは投稿されたすべてのワイン記事の詳細を見ることができてコメントも行える' do
         # Basic認証を通過する
         basic_auth root_path
         # トップページに移動したことを確認する
@@ -534,6 +534,8 @@ RSpec.describe 'WineArticles', type: :system do
         expect(current_path).to eq wine_article_path(@wine_article1.id)
         # ワイン記事１の詳細内容が存在することを確認する
         input_show_confirmation(@wine_article1.id)
+        # 詳細ページにコメントするのリンクがあることを確認する
+        expect(page).to have_link 'コメントする', href: new_wine_article_comment_path(@wine_article1.id)
         # トップページに戻る
         visit root_path
         # 投稿されたワイン記事２をクリックする
@@ -542,18 +544,27 @@ RSpec.describe 'WineArticles', type: :system do
         expect(current_path).to eq wine_article_path(@wine_article2.id)
         # ワイン記事２の詳細内容が存在することを確認する
         input_show_confirmation2(@wine_article2)
+        # 詳細ページにコメントするのリンクがあることを確認する
+        expect(page).to have_link 'コメントする', href: new_wine_article_comment_path(@wine_article2.id)
       end
     end
     context 'ワイン投稿記事の詳細が見れないとき' do
-      it 'ログインができないと投稿されたワイン記事を見ることはできない' do
+      it 'ログインができないと投稿されたワイン記事を見ることはできないし、コメントもできない' do
         # Basic認証を通過する
         basic_auth root_path
         # トップページに移動したことを確認する
         expect(current_path).to eq(root_path)
-        # ワイン記事１が存在しない事を確認する
+        # ワイン記事１とワイン記事２が存在しない事を確認する
         exist_confirmation(@wine_article1)
-        # ワイン記事２が存在しない事を確認する
         exist_confirmation2(@wine_article2)
+        # ワイン記事１の新規コメントページへの移動を試みる
+        visit new_wine_article_comment_path(@wine_article1.id)
+        # ログイン画面に移動したことを確認する
+        expect(current_path).to eq(new_user_session_path)
+        # ワイン記事２の新規コメントページへの移動を試みる
+        visit new_wine_article_comment_path(@wine_article2.id)
+        # ログイン画面に移動したことを確認する
+        expect(current_path).to eq(new_user_session_path)
       end
     end
   end
