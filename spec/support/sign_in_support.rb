@@ -14,7 +14,6 @@ module SignInSupport
     click_on('ログインする')
   end
 
-
   def sign_in_edit(_wine_article)
     visit new_user_session_path
     fill_in 'Email', with: @wine_article1.user.email
