@@ -8,9 +8,8 @@ end
 
 RSpec.describe 'WineArticles', type: :system do
   before do
-    @user = FactoryBot.create(:user)
-    @wine_article = FactoryBot.build(:wine_article)
-    @wine_article.user_id = @user.id
+    @user = create(:user)
+    @wine_article = build(:wine_article, user: @user)
     sleep 0.1
   end
 
@@ -142,8 +141,8 @@ end
 
 RSpec.describe 'WineArticles', type: :system do
   before do
-    @wine_article1 = FactoryBot.create(:wine_article)
-    @wine_article2 = FactoryBot.create(:wine_article)
+    @wine_article1 = create(:wine_article)
+    @wine_article2 = create(:wine_article)
     sleep 0.1
   end
 
@@ -459,8 +458,8 @@ end
 
 RSpec.describe 'WineArticles', type: :system do
   before do
-    @wine_article1 = FactoryBot.create(:wine_article)
-    @wine_article2 = FactoryBot.create(:wine_article)
+    @wine_article1 = create(:wine_article)
+    @wine_article2 = create(:wine_article)
     sleep 0.1
   end
   describe 'ワイン投稿記事削除機能' do
@@ -516,8 +515,8 @@ end
 
 RSpec.describe 'WineArticles', type: :system do
   before do
-    @wine_article1 = FactoryBot.create(:wine_article)
-    @wine_article2 = FactoryBot.create(:wine_article)
+    @wine_article1 = create(:wine_article)
+    @wine_article2 = create(:wine_article)
     sleep 0.1
   end
   describe 'ワイン投稿記事詳細機能' do
