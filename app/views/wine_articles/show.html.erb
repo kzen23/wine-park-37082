@@ -36,10 +36,14 @@
       <div class="about_link">
         <%= link_to "編集する", edit_wine_article_path(@wine_article.id), method: :get, class: "edit_link" %>
         <%= link_to "削除する", wine_article_path(@wine_article.id), method: :delete, class: "delete_link" %>
+        <%= link_to "私の投稿一覧", our_own_path(@wine_article.user_id), class: "my_page_link" %>
         <%= link_to "もどる", root_path, method: :get, class: "root_link" %>
       </div>
     <% else %>
+      <div class="about_link">
         <%= link_to "もどる", root_path, method: :get, class: "else_root_link" %>
+        <%= link_to "私の投稿一覧", our_own_path(@wine_article.user_id), class: "else_root_link" %>
+      </div>
     <% end %>
 </div>
 
@@ -66,7 +70,7 @@
     <div class="comment_box">
       <p class="comment_index">
         <% @comments.each do |comment| %>
-            <%= link_to comment.user.nickname, "#", class: "name_link" %>:
+            <%= link_to comment.user.nickname, our_own_path(comment.user_id), class: "name_link" %>:
             <%= comment.text %>
           <% if current_user.id == comment.user.id %>
             <%= link_to "編集", edit_wine_article_comment_path(@wine_article, comment) %>
