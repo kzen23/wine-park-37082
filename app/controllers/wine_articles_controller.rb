@@ -22,6 +22,7 @@ class WineArticlesController < ApplicationController
 
   def show
     @comments = @wine_article.comments.includes(:user)
+    @user = @wine_article.user
   end
 
   def destroy
