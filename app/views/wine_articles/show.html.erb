@@ -83,5 +83,14 @@
 
   <div class="link_main">
     <%= link_to 'コメントする', new_wine_article_comment_path(@wine_article.id), class: "comment_link" %>
+    <% if current_user != @user %>
+      <% if current_user.following?(@user) %>
+        <%= link_to "フォロー外す", user_relationship_path(@user.id), method: :delete, class: "comment_link" %>
+      <% else %>
+        <%= link_to "フォローする", user_relationships_path(@user.id), method: :post, class: "comment_link" %>
+      <% end %>
+    <% end %>
+    <%= link_to "フォロー", user_followings_path(@user.id), class: "comment_link" %>
+    <%= link_to "フォロワー", user_followers_path(@user.id), class: "comment_link" %>
   </div>
 </div>
