@@ -1,5 +1,5 @@
 <div class="new_comment">
-    <%= form_with(model: [@wine_article, @comment], local: true) do |form| %>
+  <%= form_with(model: [@wine_article, @comment], local: true) do |form| %>
     <div class="errors">
       <%= render "devise/shared/error_messages", resource: @comment %>
     </div>
@@ -9,6 +9,7 @@
     </div>
     <div class="submit_position">
       <%= form.submit "コメントする", class: "comment_submit"%>
+      <%= link_to 'もどる', wine_article_path(params[:wine_article_id]), class: "comment_back" %>
     </div>
   <% end %>
 </div>

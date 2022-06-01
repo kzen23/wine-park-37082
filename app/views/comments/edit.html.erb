@@ -9,6 +9,7 @@
     </div>
     <div class="submit_position">
       <%= form.submit "更新する", class: "comment_submit"%>
+      <%= link_to 'もどる', wine_article_path(params[:wine_article_id]), class: "comment_back" %>
     </div>
   <% end %>
 </div>
