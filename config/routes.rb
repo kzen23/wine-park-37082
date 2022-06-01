@@ -1,6 +1,4 @@
 Rails.application.routes.draw do
-  get 'relationships/followed'
-  get 'relationships/follows'
   devise_for :users, controllers: {
     registrations: 'users/registrations'
   }
@@ -15,5 +13,11 @@ Rails.application.routes.draw do
   end
 
   resources :our_owns, only: :show
+
+  resources :users do
+    resources :relationships, only: [:create, :destroy]
+    get 'followings' => 'relationships#followings', as: "followings"
+    get 'followers' => 'relationships#followers', as: "followers"
+  end
 
 end
