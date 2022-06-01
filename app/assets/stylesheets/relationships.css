@@ -1,0 +1,40 @@
+.main_user{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: bold;
+  font-size: 20px;
+  width: auto;
+  height: auto;
+  border: 1px solid black;
+  margin: 5px 10px 10px 15px;
+  background-color: coral;
+}
+
+.relationships{
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  margin: 5px 0 5px 13px;
+  font-size: 18px;
+}
+
+.user_name{
+  font-weight: bold;
+}
+
+.follow_value{
+  font-weight: bold;
+}
+
+.follower_value{
+  font-weight: bold;
+}
+
+.non_exist{
+  font-weight: bold;
+  font-size: 20px;
+}
+
+.our_own_link{
+  font-size: 20px;
+}

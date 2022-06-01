@@ -24,4 +24,25 @@ class User < ApplicationRecord
 
   has_many :wine_articles
   has_many :comments
+
+  # フォローする側はフォローされる側のユーザーをフォロー
+  has_many :relationships, class_name: "Relationship", foreign_key: "user_follows_id", dependent: :destroy
+  has_many :followings, through: :relationships, source: :user_followed
+  # 複数のフォローする側のユーザーにフォローされている
+  has_many :reverse_of_relationships, class_name: "Relationship", foreign_key: "user_followed_id", dependent: :destroy
+  has_many :followers, through: :reverse_of_relationships, source: :user_follows
+
+  def follow(other_user)
+    unless self == other_user
+      self.relationships.create(user_followed_id: other_user)
+    end
+  end
+
+  def unfollow(other_user)
+    relationships.find_by(user_follwed_id: other_user).destroy
+  end
+
+  def following?(other_user)
+    self.followings.include?(other_user)
+  end
 end

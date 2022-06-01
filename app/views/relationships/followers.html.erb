@@ -1,0 +1,15 @@
+<% if @users.exists? %>
+  <div>
+    <p class="main_user">🍾<%= @user.nickname %>さんをフォローしてるユーザー🍾</p>
+  </div>
+  <% @users.each do |user| %>
+    <div class="relationships">
+      <div class="user_name">ユーザー名：<%= user.nickname %></div>
+      <div class="follow_value">フォロー数：<%= user.followings.count %></div>
+      <div class="follower_value">フォロワー数：<%= user.followers.count %></div>
+      <%= link_to "もどる", wine_article_path(params[:user_id]), class: "our_own_link" %>
+    </div>
+  <% end %>
+<% else %>
+  <p class="non_exist">ユーザーはいません</p>
+<% end %>

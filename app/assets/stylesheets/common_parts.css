@@ -1,3 +1,8 @@
+.bosses{
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  height: 100vh;
+}
 /* header */
 .header{
   display: flex;
@@ -69,8 +74,9 @@
   align-items: center;
   justify-content: center;
   width: 40vw;
-  height: 36vh;
+  height: 25vh;
   background-color: azure;
   font-weight: bold;
   border: 1px solid black;
+  padding: 40px 0;
 }

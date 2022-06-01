@@ -18,10 +18,10 @@ has_many :wine_articles
 has_many :comments
 has_many :favorites
 has_many :favorite_wine_articles, through: :favorites, source: :wine_article
-has_many :following_relationships, class_name: "Relationship", foreign_key: :following_id
-has_many :following, through: :relationships, source: :follower
-has_many :follower_relationships, class_name: "Relationship", foreign_key: :follower_id
-has_many :follower, through: :relationships, source: :following
+has_many :relationships, class_name: "Relationship", foreign_key: :user_follows_id, dependent: :destroy
+has_many :reverse_of_relationships, class_name: "Relationship", foreign_key: :user_followed_id, dependent: :destroy
+has_many :followed, through: :relationships, source: :user_followed
+has_many :follows, through: :reverse_of_relationships, source: :user_follows
 
 ## wine_articlesテーブル
 
@@ -71,11 +71,11 @@ belongs_to :wine_article
 
 ## Relationshipsテーブル
 
-| Column             | Type       | Options        |
-|--------------------|------------|----------------|
-| following_id       | integer    | null: false    |
-| follower_id        | integer    | null: false    |
+| Column                  | Type       | Options |
+|-------------------------|------------|---------|
+| user_follows_id         | integer    |         |
+| user_followed_id        | integer    |         |
 
 ## Association
-belongs_to :following, class_name: "User"
-belongs_to :follower, class_name: "User"
+belongs_to :user_follows_id, class_name: "User"
+belongs_to :user_followed_id, class_name: "User"
