@@ -9,11 +9,6 @@
 
 <div class="boss_form">
   <div class="input_form">
-    <%= f.label :nickname %><br />
-    <%= f.text_field :nickname,class:"input_parts", max_length: "20", autofocus: true, autocomplete: "off" %>
-  </div>
-  
-  <div class="input_form">
     <%= f.label :email %><br />
     <%= f.email_field :email,class:"input_parts", autocomplete: "off" %>
   </div>
@@ -28,6 +23,11 @@
   <div class="input_form">
     <%= f.label :password_confirmation %><br />
     <%= f.password_field :password_confirmation, class: "input_parts", autocomplete: "off" %>
+  </div>
+
+  <div class="input_form">
+    <%= f.label :nickname %><br />
+    <%= f.text_field :nickname,class:"input_parts", max_length: "20", autofocus: true, autocomplete: "off" %>
   </div>
 
   <div class="input_form">
