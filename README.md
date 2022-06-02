@@ -321,7 +321,7 @@ belongs_to :user_followed_id, class_name: "User"
 
 ### 上段：ユーザー管理機能とワイン記事管理機能の遷移図  
 ### 下段：ワイン記事詳細機能からはじまるコメント機能・フォロー・フォロワー機能の遷移図
-[![Image from Gyazo](https://i.gyazo.com/c4241edbdacc0d374e0883889c532a77.jpg)](https://gyazo.com/c4241edbdacc0d374e0883889c532a77)
+[![Image from Gyazo](https://i.gyazo.com/2bc0a5becff108cbc170035c9e051db0.jpg)](https://gyazo.com/2bc0a5becff108cbc170035c9e051db0)
 
 # 開発環境
 ・フロントエンド  
