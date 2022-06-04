@@ -193,13 +193,10 @@ https://docs.google.com/spreadsheets/d/1jxrilCaK4NWmp1R09JPmOzN_9H1GRmtDmRkh4JzJ
 [![Image from Gyazo](https://i.gyazo.com/8bab875b5fba1526615d9d58d6ea2efa.gif)](https://gyazo.com/8bab875b5fba1526615d9d58d6ea2efa)
 
 # 実装予定の機能
-現在、マイページ機能、  
-フォロー・フォロワー機能の  
-モデル単体テスト、結合テストを実施中です。
-今後は、  
-いいね機能、ランキング機能、  
-検索機能、各機能の  
-モデル単体テスト、結合テスト、S3導入を実装予定です。
+現在、いいね機能を実装中です。
+今後は、ランキング機能、  
+検索機能、S3導入、  
+必要な各機能のテストを実装予定です。
 
 # データベース設計
 [![Image from Gyazo](https://i.gyazo.com/61fcbd94cfb1fc876f6cb7a69f065d48.jpg)](https://gyazo.com/61fcbd94cfb1fc876f6cb7a69f065d48)
