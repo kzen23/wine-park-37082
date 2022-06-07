@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'favorites/create'
+  get 'favorites/destroy'
   devise_for :users, controllers: {
     registrations: 'users/registrations'
   }
@@ -10,6 +12,7 @@ Rails.application.routes.draw do
 
   resources :wine_articles do
     resources :comments, only: [:new, :create, :edit, :update, :destroy]
+    resources :favorites, only: [:create, :destroy]
   end
 
   resources :our_owns, only: :show
