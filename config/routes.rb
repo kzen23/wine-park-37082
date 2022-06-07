@@ -12,7 +12,7 @@ Rails.application.routes.draw do
 
   resources :wine_articles do
     resources :comments, only: [:new, :create, :edit, :update, :destroy]
-    resources :favorites, only: [:create, :destroy]
+    resources :favorites, only: [:show, :create, :destroy]
   end
 
   resources :our_owns, only: :show
