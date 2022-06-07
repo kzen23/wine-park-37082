@@ -92,5 +92,11 @@
     <% end %>
     <%= link_to "フォロー", user_followings_path(@user.id), class: "comment_link" %>
     <%= link_to "フォロワー", user_followers_path(@user.id), class: "comment_link" %>
+    <% if @wine_article.favorited_by?(current_user) %>
+      <p><%= link_to 'いいねを解除する', wine_article_favorite_path(@wine_article.id), method: :delete, class: "comment_link" %></p>
+    <% else %>
+      <p><%= link_to 'いいねする', wine_article_favorites_path(@wine_article.id), method: :post, class: "comment_link" %></p>
+    <% end %>
+    <p class="comment_link"><span>いいね数： </span><%= @wine_article.favorites.count %></p>
   </div>
 </div>
