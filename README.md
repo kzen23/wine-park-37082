@@ -293,10 +293,10 @@ belongs_to :wine_article
 
 ## Favoritesテーブル
 
-| Column             | Type       | Options                        |
-|--------------------|------------|--------------------------------|
-| user_id            | references | null: false, foreign_key: true |
-| wine_article_id    | references | null: false, foreign_key: true |
+| Column             | Type       | Options     |
+|--------------------|------------|-------------|
+| user_id            | integer    |             |
+| wine_article_id    | integer    |             |
 
 ## Association
 belongs_to :user  
