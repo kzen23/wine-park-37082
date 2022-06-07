@@ -25,6 +25,7 @@ class User < ApplicationRecord
   has_many :wine_articles
   has_many :comments
   has_many :favorites
+  has_many :favorite_wine_articles, through: :favorites, source: :wine_article
 
   # フォローする側はフォローされる側のユーザーをフォロー
   has_many :relationships, class_name: 'Relationship', foreign_key: 'user_follows_id', dependent: :destroy
