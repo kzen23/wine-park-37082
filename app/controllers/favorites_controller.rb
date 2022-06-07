@@ -1,6 +1,7 @@
 class FavoritesController < ApplicationController
   def show
-    @user = WineArticle.user.find(params[:wine_article_id])
+    @wine_article = WineArticle.find(params[:wine_article_id])
+    @user = @wine_article.user
     @favorite_wine_articles = @user.favorite_wine_articles
   end
 
