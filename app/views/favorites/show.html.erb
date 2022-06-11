@@ -1,1 +1,18 @@
-テスト
+<% if @favorite_wine_articles.exists? %>
+  <p class="index_navi">🥂私がいいねした一覧🥂</p>
+    <ul class="article_area">
+      <% @favorite_wine_articles.each do |favorite_wine_article| %>
+        <%= link_to wine_article_path(favorite_wine_article.id),class: "link1", method: :get do %>
+          <li class="article_box">
+            <%= image_tag favorite_wine_article.image.variant(resize: '300x300'), class:"image_set" %>
+            <p class="article_info">記事のタイトル：<%= favorite_wine_article.title %></p>
+            <p class="article_info">ワインの値段：<%= favorite_wine_article.wine_price %>円</p>
+            <p class="article_info">投稿者：<%= favorite_wine_article.user.nickname %>さん</p>
+          </li>
+        <% end %>
+      <% end %>
+    </ul>
+<% else %>
+  <p class="non_exist">いいねをした投稿はまだありません</p>
+  <%= link_to 'もどる', wine_article_path(params[:wine_article_id]), class: "our_own_link" %>
+<% end %>
