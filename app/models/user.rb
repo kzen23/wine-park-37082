@@ -22,7 +22,7 @@ class User < ApplicationRecord
     end
   end
 
-  has_many :wine_articles
+  has_many :wine_articles, dependent: :destroy
   has_many :comments
   has_many :favorites
   has_many :favorite_wine_articles, through: :favorites, source: :wine_article
