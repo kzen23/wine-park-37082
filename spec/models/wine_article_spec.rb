@@ -112,10 +112,10 @@ RSpec.describe WineArticle, type: :model do
   describe 'ユーザーとワイン投稿記事' do
     context 'ユーザー登録が存在しなくなった場合' do
       it 'ユーザーが削除されるとそのユーザーが投稿した記事も自動的に削除される' do
-        @user = create(:user)
-        @wine_article = create(:wine_article, user: @user)
-        expect{ @user.destroy }.to change{ WineArticle.count }.by(-1)
+        @wine_article = create(:wine_article)
+        expect{ @wine_article.user.destroy }.to change{ WineArticle.count }.by(-1)
       end
     end
   end
 end
+
