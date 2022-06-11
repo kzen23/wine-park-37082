@@ -1,5 +1,4 @@
 require 'rails_helper'
 
-RSpec.describe Relationship, type: :model do
-  association :user
+RSpec.describe Favorite, type: :model do
 end
