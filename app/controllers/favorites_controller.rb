@@ -1,4 +1,5 @@
 class FavoritesController < ApplicationController
+  before_action :authenticate_user!
   def show
     @wine_article = WineArticle.find(params[:wine_article_id])
     @user = @wine_article.user
