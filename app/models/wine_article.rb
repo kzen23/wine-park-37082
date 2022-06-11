@@ -4,6 +4,7 @@ class WineArticle < ApplicationRecord
   belongs_to :wine_type
   belongs_to :wine_taste
   has_many   :comments
+  has_many   :favorites
 
   has_one_attached :image
 
@@ -22,5 +23,9 @@ class WineArticle < ApplicationRecord
     validates :wine_price
     validates :wine_type_id
     validates :wine_taste_id
+  end
+
+  def favorited_by?(user)
+    favorites.where(user_id: user.id).exists?
   end
 end
