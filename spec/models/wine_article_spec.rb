@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe WineArticle, type: :model do
   before do
-    @wine_article = FactoryBot.build(:wine_article)
+    @wine_article = build(:wine_article)
   end
 
   describe 'ワイン投稿記事の保存' do
@@ -106,6 +106,15 @@ RSpec.describe WineArticle, type: :model do
         @wine_article.user = nil
         @wine_article.valid?
         expect(@wine_article.errors.full_messages).to include('User must exist')
+      end
+    end
+  end
+  describe 'ユーザーとワイン投稿記事' do
+    context 'ユーザー登録が存在しなくなった場合' do
+      it 'ユーザーが削除されるとそのユーザーが投稿した記事も自動的に削除される' do
+        @user = create(:user)
+        @wine_article = create(:wine_article, user: @user)
+        expect{ @user.destroy }.to change{ WineArticle.count }.by(-1)
       end
     end
   end
