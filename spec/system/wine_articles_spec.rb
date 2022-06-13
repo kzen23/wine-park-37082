@@ -452,6 +452,35 @@ RSpec.describe 'WineArticles', type: :system do
       expect(current_path).to eq(root_path)
     end
     it 'ログインしていて必要な値を入力してもユーザーは、自身のニックネームのリンクをクリックしたら過去の自分のワイン記事を編集出来ない' do
+      # Basic認証を通過する
+      basic_auth root_path
+      # トップページに移動したことを確認する
+      expect(current_path).to eq(root_path)
+      # ログインする
+      sign_in_edit(@wine_article1.user)
+      # 投稿したワイン記事１をクリックする
+      find_link(all('.link1')[@wine_article1.id], href: wine_article_path(@wine_article1.id)).click
+      # 詳細ページに移動した事を確認する
+      expect(current_path).to eq wine_article_path(@wine_article1.id)
+      # 詳細ページ内に編集ページへのリンクがある事を確認する
+      expect(page).to have_link '編集する', href: edit_wine_article_path(@wine_article1.id)
+      # 編集ページへ移動する
+      visit edit_wine_article_path(@wine_article1.id)
+      # すでに投稿済みの内容がフォームに入っていることを確認する
+      edit_confirmation(@wine_article1)
+      # wine_name_kanaのみ空欄にする
+      fill_in 'wine_article_wine_name_kana', with: ''
+      # 自身のニックネームをクリックする
+      click_on @wine_article1.user.nickname
+      # 自身のマイページにいることを確認する
+      expect(current_path).to eq(our_own_path(@wine_article1.user.id))
+      # トップページの内容が変わっていないことを確認する
+      visit root_path
+      input_index_confirmation2(@wine_article1)
+      # 詳細ページへ移動する
+      visit wine_article_path(@wine_article1.id)
+      # 詳細ページの内容が変わっていないことを確認する
+      input_show_confirmation(@wine_article1.id)
     end
   end
 end
