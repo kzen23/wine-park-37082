@@ -192,11 +192,22 @@ https://docs.google.com/spreadsheets/d/1jxrilCaK4NWmp1R09JPmOzN_9H1GRmtDmRkh4JzJ
 ・フォローもしくはフォロワーの関係性がない時は、両者このように表示されます。
 [![Image from Gyazo](https://i.gyazo.com/8bab875b5fba1526615d9d58d6ea2efa.gif)](https://gyazo.com/8bab875b5fba1526615d9d58d6ea2efa)
 
+## いいね機能  
+
+### いいねとその解除  
+・良いと思った記事があったらいいねをしましょう！  
+[![Image from Gyazo](https://i.gyazo.com/8b360574c17dcc0f5177dca8aef538aa.gif)](https://gyazo.com/8b360574c17dcc0f5177dca8aef538aa)
+・いいねの解除も可能です  
+[![Image from Gyazo](https://i.gyazo.com/1a1ed950ad3b4ade0cbb2deb00455ffb.gif)](https://gyazo.com/1a1ed950ad3b4ade0cbb2deb00455ffb)
+
+### いいね一覧ページ
+・自分がいいねをつけた記事は、自身のマイページから確認可能です。  
+[![Image from Gyazo](https://i.gyazo.com/81498daf6d0958e2765be499a753f207.gif)](https://gyazo.com/81498daf6d0958e2765be499a753f207)
+
 # 実装予定の機能
-現在、いいね機能を実装中です。
-今後は、ランキング機能、  
-検索機能、S3導入、  
-必要な各機能のテストを実装予定です。
+現在、ランキング機能を実装中です。
+今後は、検索機能、  
+S3導入、必要な各機能のテストを実装予定です。
 
 # データベース設計
 [![Image from Gyazo](https://i.gyazo.com/61fcbd94cfb1fc876f6cb7a69f065d48.jpg)](https://gyazo.com/61fcbd94cfb1fc876f6cb7a69f065d48)
@@ -317,8 +328,9 @@ belongs_to :user_followed_id, class_name: "User"
 # 画面遷移図
 
 ### 上段：ユーザー管理機能とワイン記事管理機能の遷移図  
-### 下段：ワイン記事詳細機能からはじまるコメント機能・フォロー・フォロワー機能の遷移図
-[![Image from Gyazo](https://i.gyazo.com/2bc0a5becff108cbc170035c9e051db0.jpg)](https://gyazo.com/2bc0a5becff108cbc170035c9e051db0)
+### 中段：ワイン記事詳細機能からはじまるコメント機能・フォロー・フォロワー機能の遷移図
+### 下段：ワイン記事詳細機能からはじまるいいね機能の遷移図
+[![Image from Gyazo](https://i.gyazo.com/860796be1a5e5db26806c395eb859a5d.jpg)](https://gyazo.com/860796be1a5e5db26806c395eb859a5d)
 
 # 開発環境
 ・フロントエンド  
