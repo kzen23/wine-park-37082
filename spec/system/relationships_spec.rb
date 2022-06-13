@@ -78,7 +78,7 @@ RSpec.describe 'Relationships', type: :system do
         # ワイン記事２の詳細ページにいることを確認する
         expect(current_path).to eq wine_article_path(@wine_article2.id)
         # フォローしたユーザーがいなくなるとモデルのカウントが１下がる事を確認する
-        expect{ @wine_article1.user.destroy }.to change { Relationship.count }.by(-1)
+        expect { @wine_article1.user.destroy }.to change { Relationship.count }.by(-1)
       end
     end
   end
