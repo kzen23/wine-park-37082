@@ -3,11 +3,8 @@ require 'rails_helper'
 RSpec.describe Comment, type: :model do
   describe 'コメント投稿の保存' do
     before do
-      @comment = FactoryBot.build(:comment)
-      @user = FactoryBot.create(:user)
-      @wine_article = FactoryBot.create(:wine_article)
-      @comment.user_id = @user.id
-      @comment.wine_article_id = @wine_article.id
+      @wine_article = create(:wine_article)
+      @comment = build(:comment, user: @wine_article.user, wine_article: @wine_article)
       sleep 0.1
     end
 
@@ -36,6 +33,19 @@ RSpec.describe Comment, type: :model do
         @comment.wine_article_id = nil
         @comment.valid?
         expect(@comment.errors.full_messages).to include('Wine article must exist')
+      end
+    end
+  end
+  describe 'ワイン投稿記事とコメント' do
+    before do
+      @wine_article = create(:wine_article)
+      @comment = create(:comment, user: @wine_article.user, wine_article: @wine_article)
+      sleep 0.1
+    end
+
+    context 'ワイン投稿記事が削除されたとき' do
+      it 'ワイン記事が削除されるとコメントも自動的に削除される' do
+        expect { @wine_article.destroy }.to change { Comment.count }.by(-1)
       end
     end
   end
