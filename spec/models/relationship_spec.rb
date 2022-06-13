@@ -1,3 +1,3 @@
 require 'rails_helper'
-RSpec.describe Favorite, type: :model do
+RSpec.describe Relationship, type: :model do
 end
